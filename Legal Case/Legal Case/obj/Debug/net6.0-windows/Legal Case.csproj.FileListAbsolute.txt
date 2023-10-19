@@ -15,3 +15,20 @@ C:\Users\Gold\Legal-Case-Management-System\Legal Case\Legal Case\obj\Debug\net6.
 C:\Users\Gold\Legal-Case-Management-System\Legal Case\Legal Case\obj\Debug\net6.0-windows\Legal Case.pdb
 C:\Users\Gold\Legal-Case-Management-System\Legal Case\Legal Case\obj\Debug\net6.0-windows\Legal Case.genruntimeconfig.cache
 C:\Users\Gold\Legal-Case-Management-System\Legal Case\Legal Case\obj\Debug\net6.0-windows\ref\Legal Case.dll
+E:\LCMS\Legal Case\Legal Case\obj\Debug\net6.0-windows\Legal_Case.Form1.resources
+E:\LCMS\Legal Case\Legal Case\obj\Debug\net6.0-windows\Legal_Case.Properties.Resources.resources
+E:\LCMS\Legal Case\Legal Case\obj\Debug\net6.0-windows\Legal Case.csproj.GenerateResource.cache
+E:\LCMS\Legal Case\Legal Case\obj\Debug\net6.0-windows\Legal Case.GeneratedMSBuildEditorConfig.editorconfig
+E:\LCMS\Legal Case\Legal Case\obj\Debug\net6.0-windows\Legal Case.AssemblyInfoInputs.cache
+E:\LCMS\Legal Case\Legal Case\obj\Debug\net6.0-windows\Legal Case.AssemblyInfo.cs
+E:\LCMS\Legal Case\Legal Case\obj\Debug\net6.0-windows\Legal Case.csproj.CoreCompileInputs.cache
+E:\LCMS\Legal Case\Legal Case\obj\Debug\net6.0-windows\Legal Case.dll
+E:\LCMS\Legal Case\Legal Case\obj\Debug\net6.0-windows\refint\Legal Case.dll
+E:\LCMS\Legal Case\Legal Case\obj\Debug\net6.0-windows\Legal Case.pdb
+E:\LCMS\Legal Case\Legal Case\bin\Debug\net6.0-windows\Legal Case.exe
+E:\LCMS\Legal Case\Legal Case\bin\Debug\net6.0-windows\Legal Case.deps.json
+E:\LCMS\Legal Case\Legal Case\bin\Debug\net6.0-windows\Legal Case.runtimeconfig.json
+E:\LCMS\Legal Case\Legal Case\bin\Debug\net6.0-windows\Legal Case.dll
+E:\LCMS\Legal Case\Legal Case\bin\Debug\net6.0-windows\Legal Case.pdb
+E:\LCMS\Legal Case\Legal Case\obj\Debug\net6.0-windows\Legal Case.genruntimeconfig.cache
+E:\LCMS\Legal Case\Legal Case\obj\Debug\net6.0-windows\ref\Legal Case.dll

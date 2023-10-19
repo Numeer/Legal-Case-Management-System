@@ -12,7 +12,5 @@ namespace Legal_Case
 
         }
 
-       
-      
     }
 }

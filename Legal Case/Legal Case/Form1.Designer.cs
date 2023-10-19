@@ -53,7 +53,6 @@
             picture.SizeMode = PictureBoxSizeMode.AutoSize;
             picture.TabIndex = 0;
             picture.TabStop = false;
-            picture.Click += pictureBox1_Click;
             // 
             // icon
             // 
@@ -66,7 +65,6 @@
             icon.SizeMode = PictureBoxSizeMode.StretchImage;
             icon.TabIndex = 1;
             icon.TabStop = false;
-            icon.Click += pictureBox2_Click;
             // 
             // name
             // 
