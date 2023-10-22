@@ -72,8 +72,9 @@
             name.Name = "name";
             name.Size = new Size(80, 30);
             name.TabIndex = 2;
-            name.Text = "Username";
+            name.Text = "Email";
             name.TextAlign = ContentAlignment.MiddleCenter;
+            name.Click += name_Click;
             // 
             // password
             // 
@@ -106,6 +107,7 @@
             loginButton.TabIndex = 6;
             loginButton.Text = "LOGIN";
             loginButton.UseVisualStyleBackColor = true;
+            loginButton.Click += loginButton_Click;
             // 
             // rememberMe
             // 
