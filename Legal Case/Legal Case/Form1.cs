@@ -26,7 +26,7 @@ namespace Legal_Case
             if (isValidUser)
             {
                 MessageBox.Show("Login successful!");
-                Form2 form2 = new Form2();
+                Form2 form2 = new Form2(email);
                 form2.Show();
             }
             else
