@@ -111,6 +111,7 @@
             // 
             // rememberMe
             // 
+            rememberMe.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             rememberMe.AutoSize = true;
             rememberMe.BackgroundImage = (Image)resources.GetObject("rememberMe.BackgroundImage");
             rememberMe.ForeColor = SystemColors.Control;
@@ -123,6 +124,7 @@
             // 
             // forgot
             // 
+            forgot.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             forgot.BackColor = SystemColors.Info;
             forgot.BackgroundImage = (Image)resources.GetObject("forgot.BackgroundImage");
             forgot.BackgroundImageLayout = ImageLayout.None;
@@ -147,6 +149,7 @@
             nameText.Name = "nameText";
             nameText.Size = new Size(184, 23);
             nameText.TabIndex = 9;
+            nameText.TextChanged += nameText_TextChanged;
             // 
             // passwordText
             // 

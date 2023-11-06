@@ -14,7 +14,7 @@ namespace Legal_Case
 
         }
 
-        
+
 
         private void loginButton_Click(object sender, EventArgs e)
         {
@@ -67,6 +67,11 @@ namespace Legal_Case
         }
 
         private void name_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void nameText_TextChanged(object sender, EventArgs e)
         {
 
         }
