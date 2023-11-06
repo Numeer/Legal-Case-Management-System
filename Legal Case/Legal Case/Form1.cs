@@ -14,7 +14,7 @@ namespace Legal_Case
 
         }
 
-        
+
 
         private void loginButton_Click(object sender, EventArgs e)
         {
@@ -36,8 +36,8 @@ namespace Legal_Case
         }
         private bool ValidateUser(string email, string password)
         {
-            string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"E:\\LCMS\\Legal Case\\Legal Case\\Database1.mdf\";Integrated Security=True";
-
+            //string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"E:\\LCMS\\Legal Case\\Legal Case\\Database1.mdf\";Integrated Security=True";
+            string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"C:\\Users\\Gold\\Legal-Case-Management-System\\Legal Case\\Legal Case\\Database1.mdf\";Integrated Security=True";
             try
             {
                 using (SqlConnection connection = new SqlConnection(connectionString))
@@ -67,6 +67,11 @@ namespace Legal_Case
         }
 
         private void name_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void nameText_TextChanged(object sender, EventArgs e)
         {
 
         }

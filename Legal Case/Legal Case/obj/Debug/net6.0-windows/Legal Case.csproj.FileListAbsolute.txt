@@ -51,3 +51,14 @@ E:\LCMS\Legal Case\Legal Case\obj\Debug\net6.0-windows\Legal Case.csproj.Assembl
 E:\LCMS\Legal Case\Legal Case\obj\Debug\net6.0-windows\Legal Case.csproj.CopyComplete
 E:\LCMS\Legal Case\Legal Case\obj\Debug\net6.0-windows\Legal_Case.Form2.resources
 E:\LCMS\Legal Case\Legal Case\obj\Debug\net6.0-windows\Legal_Case.Form3.resources
+C:\Users\Gold\Legal-Case-Management-System\Legal Case\Legal Case\bin\Debug\net6.0-windows\System.Data.SqlClient.dll
+C:\Users\Gold\Legal-Case-Management-System\Legal Case\Legal Case\bin\Debug\net6.0-windows\runtimes\win-arm64\native\sni.dll
+C:\Users\Gold\Legal-Case-Management-System\Legal Case\Legal Case\bin\Debug\net6.0-windows\runtimes\win-x64\native\sni.dll
+C:\Users\Gold\Legal-Case-Management-System\Legal Case\Legal Case\bin\Debug\net6.0-windows\runtimes\win-x86\native\sni.dll
+C:\Users\Gold\Legal-Case-Management-System\Legal Case\Legal Case\bin\Debug\net6.0-windows\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
+C:\Users\Gold\Legal-Case-Management-System\Legal Case\Legal Case\bin\Debug\net6.0-windows\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
+C:\Users\Gold\Legal-Case-Management-System\Legal Case\Legal Case\obj\Debug\net6.0-windows\Legal Case.csproj.AssemblyReference.cache
+C:\Users\Gold\Legal-Case-Management-System\Legal Case\Legal Case\obj\Debug\net6.0-windows\Legal Case.csproj.ResolveComReference.cache
+C:\Users\Gold\Legal-Case-Management-System\Legal Case\Legal Case\obj\Debug\net6.0-windows\Legal_Case.Form2.resources
+C:\Users\Gold\Legal-Case-Management-System\Legal Case\Legal Case\obj\Debug\net6.0-windows\Legal_Case.Form3.resources
+C:\Users\Gold\Legal-Case-Management-System\Legal Case\Legal Case\obj\Debug\net6.0-windows\Legal Case.csproj.CopyComplete

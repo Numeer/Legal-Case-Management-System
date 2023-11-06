@@ -37,7 +37,7 @@ namespace Legal_Case
         }
         private DataTable RetrieveCaseDetails(int caseID)
         {
-            string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"E:\\LCMS\\Legal Case\\Legal Case\\Database1.mdf\";Integrated Security=True";
+            string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"C:\\Users\\Gold\\Legal-Case-Management-System\\Legal Case\\Legal Case\\Database1.mdf\";Integrated Security=True";
             string query = @"SELECT C.CaseName, C.Description, D.DocumentName, D.UploadDate
                      FROM [Case] AS C
                      LEFT JOIN [Document] AS D ON C.CaseID = D.CaseID
@@ -61,7 +61,7 @@ namespace Legal_Case
 
         private DataTable RetrieveCaseData()
         {
-            string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"E:\\LCMS\\Legal Case\\Legal Case\\Database1.mdf\";Integrated Security=True";
+            string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"C:\\Users\\Gold\\Legal-Case-Management-System\\Legal Case\\Legal Case\\Database1.mdf\";Integrated Security=True";
             string query = @"SELECT C.CaseID, C.CaseName, C.Status, C.Progress
                              FROM [Case] AS C
                              INNER JOIN [User] AS U ON C.AssignedAttorneyID = U.UserID
@@ -88,7 +88,6 @@ namespace Legal_Case
             DataTable caseData = RetrieveCaseData();
 
             dataGridView1.DataSource = caseData;
-        }
-
+        } 
     }
 }

@@ -33,11 +33,7 @@
             icon = new PictureBox();
             name = new Label();
             password = new Label();
-            panel1 = new Panel();
-            panel2 = new Panel();
             loginButton = new Button();
-            rememberMe = new CheckBox();
-            forgot = new Button();
             nameText = new TextBox();
             passwordText = new TextBox();
             ((System.ComponentModel.ISupportInitialize)picture).BeginInit();
@@ -85,23 +81,10 @@
             password.Text = "Password";
             password.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // panel1
-            // 
-            panel1.Location = new Point(446, 208);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(200, 1);
-            panel1.TabIndex = 4;
-            // 
-            // panel2
-            // 
-            panel2.Location = new Point(446, 269);
-            panel2.Name = "panel2";
-            panel2.Size = new Size(200, 1);
-            panel2.TabIndex = 5;
-            // 
             // loginButton
             // 
-            loginButton.Location = new Point(477, 331);
+            loginButton.FlatStyle = FlatStyle.Popup;
+            loginButton.Location = new Point(477, 305);
             loginButton.Name = "loginButton";
             loginButton.Size = new Size(90, 41);
             loginButton.TabIndex = 6;
@@ -109,51 +92,25 @@
             loginButton.UseVisualStyleBackColor = true;
             loginButton.Click += loginButton_Click;
             // 
-            // rememberMe
-            // 
-            rememberMe.AutoSize = true;
-            rememberMe.BackgroundImage = (Image)resources.GetObject("rememberMe.BackgroundImage");
-            rememberMe.ForeColor = SystemColors.Control;
-            rememberMe.Location = new Point(376, 289);
-            rememberMe.Name = "rememberMe";
-            rememberMe.Size = new Size(104, 19);
-            rememberMe.TabIndex = 7;
-            rememberMe.Text = "Remember Me";
-            rememberMe.UseVisualStyleBackColor = true;
-            // 
-            // forgot
-            // 
-            forgot.BackColor = SystemColors.Info;
-            forgot.BackgroundImage = (Image)resources.GetObject("forgot.BackgroundImage");
-            forgot.BackgroundImageLayout = ImageLayout.None;
-            forgot.FlatAppearance.BorderColor = Color.FromArgb(64, 64, 64);
-            forgot.FlatStyle = FlatStyle.Flat;
-            forgot.ForeColor = SystemColors.Control;
-            forgot.Location = new Point(532, 282);
-            forgot.Name = "forgot";
-            forgot.Size = new Size(114, 31);
-            forgot.TabIndex = 8;
-            forgot.Text = "Forgot Password?";
-            forgot.TextImageRelation = TextImageRelation.ImageAboveText;
-            forgot.UseVisualStyleBackColor = false;
-            forgot.Visible = false;
-            // 
             // nameText
             // 
             nameText.AcceptsTab = true;
             nameText.BackColor = Color.FromArgb(64, 64, 64);
             nameText.BorderStyle = BorderStyle.FixedSingle;
+            nameText.ForeColor = SystemColors.Info;
             nameText.Location = new Point(462, 179);
             nameText.Name = "nameText";
             nameText.Size = new Size(184, 23);
-            nameText.TabIndex = 9;
+            nameText.TabIndex = 10;
+            nameText.TextChanged += nameText_TextChanged;
             // 
             // passwordText
             // 
             passwordText.AcceptsTab = true;
             passwordText.BackColor = Color.FromArgb(64, 64, 64);
             passwordText.BorderStyle = BorderStyle.FixedSingle;
-            passwordText.Location = new Point(462, 240);
+            passwordText.ForeColor = SystemColors.Info;
+            passwordText.Location = new Point(462, 247);
             passwordText.Name = "passwordText";
             passwordText.Size = new Size(184, 23);
             passwordText.TabIndex = 10;
@@ -168,11 +125,7 @@
             ClientSize = new Size(800, 450);
             Controls.Add(passwordText);
             Controls.Add(nameText);
-            Controls.Add(forgot);
-            Controls.Add(rememberMe);
             Controls.Add(loginButton);
-            Controls.Add(panel2);
-            Controls.Add(panel1);
             Controls.Add(password);
             Controls.Add(name);
             Controls.Add(icon);
@@ -195,11 +148,7 @@
         private PictureBox icon;
         private Label name;
         private Label password;
-        private Panel panel1;
-        private Panel panel2;
         private Button loginButton;
-        private CheckBox rememberMe;
-        private Button forgot;
         private TextBox nameText;
         private TextBox passwordText;
     }

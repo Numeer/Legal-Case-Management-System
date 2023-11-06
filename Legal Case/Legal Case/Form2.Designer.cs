@@ -37,7 +37,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Yu Gothic UI", 18F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.Location = new Point(167, 49);
+            label1.Location = new Point(190, 52);
             label1.Name = "label1";
             label1.Size = new Size(505, 32);
             label1.TabIndex = 0;
@@ -48,7 +48,7 @@
             // 
             dataGridView1.AllowUserToOrderColumns = true;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(105, 124);
+            dataGridView1.Location = new Point(135, 107);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowTemplate.Height = 25;
             dataGridView1.Size = new Size(615, 417);
