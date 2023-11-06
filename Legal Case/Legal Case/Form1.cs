@@ -4,9 +4,13 @@ namespace Legal_Case
 {
     public partial class Form1 : Form
     {
+        private string connectionString;
         public Form1()
         {
             InitializeComponent();
+            connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"E:\\LCMS\\Legal Case\\Legal Case\\Database1.mdf\";Integrated Security=True";
+            //connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"C:\\Users\\Gold\\Legal-Case-Management-System\\Legal Case\\Legal Case\\Database1.mdf\";Integrated Security=True";
+
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -26,7 +30,7 @@ namespace Legal_Case
             if (isValidUser)
             {
                 MessageBox.Show("Login successful!");
-                Form2 form2 = new Form2(email);
+                Form2 form2 = new Form2(email,connectionString);
                 form2.Show();
             }
             else
@@ -36,8 +40,6 @@ namespace Legal_Case
         }
         private bool ValidateUser(string email, string password)
         {
-            //string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"E:\\LCMS\\Legal Case\\Legal Case\\Database1.mdf\";Integrated Security=True";
-            string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"C:\\Users\\Gold\\Legal-Case-Management-System\\Legal Case\\Legal Case\\Database1.mdf\";Integrated Security=True";
             try
             {
                 using (SqlConnection connection = new SqlConnection(connectionString))

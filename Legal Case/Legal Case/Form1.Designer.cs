@@ -91,41 +91,8 @@
             loginButton.Text = "LOGIN";
             loginButton.UseVisualStyleBackColor = true;
             loginButton.Click += loginButton_Click;
+         
             // 
-<<<<<<< HEAD
-=======
-            // rememberMe
-            // 
-            rememberMe.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            rememberMe.AutoSize = true;
-            rememberMe.BackgroundImage = (Image)resources.GetObject("rememberMe.BackgroundImage");
-            rememberMe.ForeColor = SystemColors.Control;
-            rememberMe.Location = new Point(376, 289);
-            rememberMe.Name = "rememberMe";
-            rememberMe.Size = new Size(104, 19);
-            rememberMe.TabIndex = 7;
-            rememberMe.Text = "Remember Me";
-            rememberMe.UseVisualStyleBackColor = true;
-            // 
-            // forgot
-            // 
-            forgot.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            forgot.BackColor = SystemColors.Info;
-            forgot.BackgroundImage = (Image)resources.GetObject("forgot.BackgroundImage");
-            forgot.BackgroundImageLayout = ImageLayout.None;
-            forgot.FlatAppearance.BorderColor = Color.FromArgb(64, 64, 64);
-            forgot.FlatStyle = FlatStyle.Flat;
-            forgot.ForeColor = SystemColors.Control;
-            forgot.Location = new Point(532, 282);
-            forgot.Name = "forgot";
-            forgot.Size = new Size(114, 31);
-            forgot.TabIndex = 8;
-            forgot.Text = "Forgot Password?";
-            forgot.TextImageRelation = TextImageRelation.ImageAboveText;
-            forgot.UseVisualStyleBackColor = false;
-            forgot.Visible = false;
-            // 
->>>>>>> 5ee72d1f144995111698e7fbdc8959c10bba46f2
             // nameText
             // 
             nameText.AcceptsTab = true;
@@ -135,11 +102,7 @@
             nameText.Location = new Point(462, 179);
             nameText.Name = "nameText";
             nameText.Size = new Size(184, 23);
-<<<<<<< HEAD
             nameText.TabIndex = 10;
-=======
-            nameText.TabIndex = 9;
->>>>>>> 5ee72d1f144995111698e7fbdc8959c10bba46f2
             nameText.TextChanged += nameText_TextChanged;
             // 
             // passwordText

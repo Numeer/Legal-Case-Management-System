@@ -15,9 +15,11 @@ namespace Legal_Case
     public partial class Form2 : Form
     {
         private string email;
-        public Form2(string userEmail)
+        private string connectionString;
+        public Form2(string userEmail, string String)
         {
             email = userEmail;
+            connectionString = String;
             InitializeComponent();
             PopulateCaseData();
         }
@@ -35,7 +37,7 @@ namespace Legal_Case
                         if (HasPermission("UpdateCase"))
                         {
                             DataTable caseDetails = RetrieveCaseDetails(selectedCaseID);
-                            Form3 form3 = new Form3(caseDetails, selectedCaseID);
+                            Form3 form3 = new Form3(caseDetails, selectedCaseID, connectionString);
                             form3.Show();
                         }
                         else
@@ -61,13 +63,7 @@ namespace Legal_Case
         }
         private DataTable RetrieveCaseDetails(int caseID)
         {
-<<<<<<< HEAD
-            string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"C:\\Users\\Gold\\Legal-Case-Management-System\\Legal Case\\Legal Case\\Database1.mdf\";Integrated Security=True";
-            string query = @"SELECT C.CaseName, C.Description, D.DocumentName, D.UploadDate
-=======
-            string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"E:\\LCMS\\Legal Case\\Legal Case\\Database1.mdf\";Integrated Security=True";
             string query = @"SELECT C.CaseId, C.CaseName, C.Description, C.Status, C.Progress, D.DocumentName, D.UploadDate
->>>>>>> 5ee72d1f144995111698e7fbdc8959c10bba46f2
                      FROM [Case] AS C
                      LEFT JOIN [Document] AS D ON C.CaseID = D.CaseID
                      WHERE C.CaseID = @CaseID";
@@ -90,7 +86,6 @@ namespace Legal_Case
 
         private DataTable RetrieveCaseData()
         {
-            string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"C:\\Users\\Gold\\Legal-Case-Management-System\\Legal Case\\Legal Case\\Database1.mdf\";Integrated Security=True";
             string query = @"SELECT C.CaseID, C.CaseName, C.Status, C.Progress
                              FROM [Case] AS C
                              INNER JOIN [User] AS U ON C.AssignedAttorneyID = U.UserID
@@ -117,9 +112,6 @@ namespace Legal_Case
             DataTable caseData = RetrieveCaseData();
 
             dataGridView1.DataSource = caseData;
-<<<<<<< HEAD
-        } 
-=======
 
             DataGridViewButtonColumn updateButtonColumn = new DataGridViewButtonColumn();
             updateButtonColumn.HeaderText = "Update";
@@ -143,7 +135,6 @@ namespace Legal_Case
 
         private bool HasPermission(string permissionName)
         {
-            string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"E:\\LCMS\\Legal Case\\Legal Case\\Database1.mdf\";Integrated Security=True";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -168,8 +159,5 @@ namespace Legal_Case
                 }
             }
         }
-
-
->>>>>>> 5ee72d1f144995111698e7fbdc8959c10bba46f2
     }
 }

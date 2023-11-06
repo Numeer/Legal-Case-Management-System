@@ -63,6 +63,7 @@
             caseDescription.Size = new Size(550, 125);
             caseDescription.TabIndex = 2;
             caseDescription.Text = "CaseDescription";
+            caseDescription.TextChanged += caseDescription_TextChanged;
             // 
             // statusText
             // 

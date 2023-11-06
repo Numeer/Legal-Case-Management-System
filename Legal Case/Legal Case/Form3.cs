@@ -14,10 +14,11 @@ namespace Legal_Case
     public partial class Form3 : Form
     {
         private int CaseId;
-
-        public Form3(DataTable caseDetails, int caseID)
+        private string connectionString;
+        public Form3(DataTable caseDetails, int caseID,string connection)
         {
             CaseId = caseID;
+            connectionString = connection;
             InitializeComponent();
             if (caseDetails.Rows.Count > 0)
             {
@@ -34,10 +35,8 @@ namespace Legal_Case
         {
 
         }
-        private static void UpdateCaseDetails(int caseID, string newStatus, string newProgress, string newDescription, string newDocument, string newUpload)
+        private void UpdateCaseDetails(int caseID, string newStatus, string newProgress, string newDescription, string newDocument, string newUpload)
         {
-            string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"E:\\LCMS\\Legal Case\\Legal Case\\Database1.mdf\";Integrated Security=True";
-
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();
@@ -85,6 +84,11 @@ namespace Legal_Case
             UpdateCaseDetails(selectedCaseID, newStatus, newProgress, newDescription, newDocument, newUpload);
             MessageBox.Show("Case details updated successfully.", "Update Complete", MessageBoxButtons.OK, MessageBoxIcon.Information);
             this.Close();
+        }
+
+        private void caseDescription_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
