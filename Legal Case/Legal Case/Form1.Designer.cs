@@ -53,7 +53,6 @@
             picture.SizeMode = PictureBoxSizeMode.AutoSize;
             picture.TabIndex = 0;
             picture.TabStop = false;
-            picture.Click += pictureBox1_Click;
             // 
             // icon
             // 
@@ -66,7 +65,6 @@
             icon.SizeMode = PictureBoxSizeMode.StretchImage;
             icon.TabIndex = 1;
             icon.TabStop = false;
-            icon.Click += pictureBox2_Click;
             // 
             // name
             // 
@@ -74,8 +72,9 @@
             name.Name = "name";
             name.Size = new Size(80, 30);
             name.TabIndex = 2;
-            name.Text = "Username";
+            name.Text = "Email";
             name.TextAlign = ContentAlignment.MiddleCenter;
+            name.Click += name_Click;
             // 
             // password
             // 
@@ -108,6 +107,7 @@
             loginButton.TabIndex = 6;
             loginButton.Text = "LOGIN";
             loginButton.UseVisualStyleBackColor = true;
+            loginButton.Click += loginButton_Click;
             // 
             // rememberMe
             // 
