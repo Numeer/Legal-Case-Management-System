@@ -15,7 +15,7 @@ namespace Legal_Case
     {
         private int CaseId;
         private string connectionString;
-        public Form3(DataTable caseDetails, int caseID,string connection)
+        public Form3(DataTable caseDetails, int caseID, string connection)
         {
             CaseId = caseID;
             connectionString = connection;
@@ -87,6 +87,26 @@ namespace Legal_Case
         }
 
         private void caseDescription_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void caseDescription_TextChanged_1(object sender, EventArgs e)
         {
 
         }
