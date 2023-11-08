@@ -5,19 +5,17 @@ namespace Legal_Case
     public partial class Form1 : Form
     {
         private string connectionString;
+
         public Form1()
         {
+            connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"C:\\Users\\Gold\\LCMS\\Legal-Case-Management-System\\Legal Case\\Legal Case\\Database1.mdf\";Integrated Security=True";
             InitializeComponent();
-            connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"E:\\LCMS\\Legal Case\\Legal Case\\Database1.mdf\";Integrated Security=True";
-            //connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"C:\\Users\\Gold\\Legal-Case-Management-System\\Legal Case\\Legal Case\\Database1.mdf\";Integrated Security=True";
-
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
 
         }
-
 
 
         private void loginButton_Click(object sender, EventArgs e)
@@ -30,8 +28,9 @@ namespace Legal_Case
             if (isValidUser)
             {
                 MessageBox.Show("Login successful!");
-                Form2 form2 = new Form2(email,connectionString);
+                Form2 form2 = new Form2(email, connectionString);
                 form2.Show();
+                this.Hide();
             }
             else
             {
@@ -40,6 +39,7 @@ namespace Legal_Case
         }
         private bool ValidateUser(string email, string password)
         {
+            //string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"E:\\LCMS\\Legal Case\\Legal Case\\Database1.mdf\";Integrated Security=True";
             try
             {
                 using (SqlConnection connection = new SqlConnection(connectionString))
@@ -51,6 +51,7 @@ namespace Legal_Case
                         command.Parameters.AddWithValue("@Email", email);
                         command.Parameters.AddWithValue("@Password", password);
                         int result = (int)command.ExecuteScalar();
+                        Console.WriteLine(result);
                         return result > 0;
                     }
                 }
@@ -76,6 +77,41 @@ namespace Legal_Case
         private void nameText_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void picture_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void password_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void passwordText_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void closeBtn_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

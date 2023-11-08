@@ -39,6 +39,7 @@ namespace Legal_Case
                             DataTable caseDetails = RetrieveCaseDetails(selectedCaseID);
                             Form3 form3 = new Form3(caseDetails, selectedCaseID, connectionString);
                             form3.Show();
+                            this.Hide();
                         }
                         else
                         {
@@ -51,6 +52,8 @@ namespace Legal_Case
 
                         if (HasPermission("DeleteCase"))
                         {
+                            DataTable caseDetails = RetrieveCaseDetails(selectedCaseID);
+                            MessageBox.Show("Case successfully deleted", "", MessageBoxButtons.OK);
                             //To be Implement :(
                         }
                         else
@@ -63,7 +66,7 @@ namespace Legal_Case
         }
         private DataTable RetrieveCaseDetails(int caseID)
         {
-            string query = @"SELECT C.CaseId, C.CaseName, C.Description, C.Status, C.Progress, D.DocumentName, D.UploadDate
+            string query = @"SELECT C.CaseName, C.Description, C.Status, C.Progress, D.DocumentName, D.UploadDate
                      FROM [Case] AS C
                      LEFT JOIN [Document] AS D ON C.CaseID = D.CaseID
                      WHERE C.CaseID = @CaseID";
@@ -115,18 +118,18 @@ namespace Legal_Case
 
             DataGridViewButtonColumn updateButtonColumn = new DataGridViewButtonColumn();
             updateButtonColumn.HeaderText = "Update";
-            updateButtonColumn.Text = "Update";
+            updateButtonColumn.Text = "Do";
             updateButtonColumn.UseColumnTextForButtonValue = true;
             updateButtonColumn.FlatStyle = FlatStyle.Popup;
-            updateButtonColumn.DefaultCellStyle.BackColor = Color.Green;
+            updateButtonColumn.DefaultCellStyle.BackColor = Color.DarkGray;
             updateButtonColumn.DefaultCellStyle.ForeColor = Color.White;
 
             DataGridViewButtonColumn deleteButtonColumn = new DataGridViewButtonColumn();
             deleteButtonColumn.HeaderText = "Delete";
-            deleteButtonColumn.Text = "Delete";
+            deleteButtonColumn.Text = "Do";
             deleteButtonColumn.UseColumnTextForButtonValue = true;
             deleteButtonColumn.FlatStyle = FlatStyle.Popup;
-            deleteButtonColumn.DefaultCellStyle.BackColor = Color.Red;
+            deleteButtonColumn.DefaultCellStyle.BackColor = Color.DarkGray;
             deleteButtonColumn.DefaultCellStyle.ForeColor = Color.White;
 
             dataGridView1.Columns.Add(updateButtonColumn);
@@ -158,6 +161,22 @@ namespace Legal_Case
                     return count > 0;
                 }
             }
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Form2_Load(object sender, EventArgs e)
+        {
+            dataGridView1.ClearSelection();
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }
