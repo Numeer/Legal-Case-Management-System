@@ -63,16 +63,16 @@ E:\LCMS\Legal Case\Legal Case\obj\Debug\net6.0-windows\Legal Case.pdb
 E:\LCMS\Legal Case\Legal Case\obj\Debug\net6.0-windows\Legal Case.genruntimeconfig.cache
 E:\LCMS\Legal Case\Legal Case\obj\Debug\net6.0-windows\ref\Legal Case.dll
 C:\Users\Gold\LCMS\Legal-Case-Management-System\Legal Case\Legal Case\bin\Debug\net6.0-windows\Legal Case.exe
+C:\Users\Gold\LCMS\Legal-Case-Management-System\Legal Case\Legal Case\bin\Debug\net6.0-windows\Legal Case.dll
+C:\Users\Gold\LCMS\Legal-Case-Management-System\Legal Case\Legal Case\bin\Debug\net6.0-windows\runtimes\win-x64\native\sni.dll
+C:\Users\Gold\LCMS\Legal-Case-Management-System\Legal Case\Legal Case\bin\Debug\net6.0-windows\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
 C:\Users\Gold\LCMS\Legal-Case-Management-System\Legal Case\Legal Case\bin\Debug\net6.0-windows\Legal Case.deps.json
 C:\Users\Gold\LCMS\Legal-Case-Management-System\Legal Case\Legal Case\bin\Debug\net6.0-windows\Legal Case.runtimeconfig.json
-C:\Users\Gold\LCMS\Legal-Case-Management-System\Legal Case\Legal Case\bin\Debug\net6.0-windows\Legal Case.dll
 C:\Users\Gold\LCMS\Legal-Case-Management-System\Legal Case\Legal Case\bin\Debug\net6.0-windows\Legal Case.pdb
 C:\Users\Gold\LCMS\Legal-Case-Management-System\Legal Case\Legal Case\bin\Debug\net6.0-windows\System.Data.SqlClient.dll
 C:\Users\Gold\LCMS\Legal-Case-Management-System\Legal Case\Legal Case\bin\Debug\net6.0-windows\runtimes\win-arm64\native\sni.dll
-C:\Users\Gold\LCMS\Legal-Case-Management-System\Legal Case\Legal Case\bin\Debug\net6.0-windows\runtimes\win-x64\native\sni.dll
 C:\Users\Gold\LCMS\Legal-Case-Management-System\Legal Case\Legal Case\bin\Debug\net6.0-windows\runtimes\win-x86\native\sni.dll
 C:\Users\Gold\LCMS\Legal-Case-Management-System\Legal Case\Legal Case\bin\Debug\net6.0-windows\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
-C:\Users\Gold\LCMS\Legal-Case-Management-System\Legal Case\Legal Case\bin\Debug\net6.0-windows\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
 C:\Users\Gold\LCMS\Legal-Case-Management-System\Legal Case\Legal Case\obj\Debug\net6.0-windows\Legal Case.csproj.AssemblyReference.cache
 C:\Users\Gold\LCMS\Legal-Case-Management-System\Legal Case\Legal Case\obj\Debug\net6.0-windows\Legal Case.csproj.ResolveComReference.cache
 C:\Users\Gold\LCMS\Legal-Case-Management-System\Legal Case\Legal Case\obj\Debug\net6.0-windows\Legal_Case.Form1.resources
