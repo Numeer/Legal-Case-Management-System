@@ -1,4 +1,3 @@
-using Ninject.Infrastructure.Disposal;
 using System;
 using System.Data;
 using System.Data.SqlClient;
