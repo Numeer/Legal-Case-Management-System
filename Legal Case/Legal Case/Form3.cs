@@ -15,12 +15,13 @@ namespace Legal_Case
     {
         private int CaseId;
         private string connectionString;
+        private string email;
         private SqlConnection connection;
-
-        public Form3(DataTable caseDetails, int caseID, string connection)
+        public Form3(String Email, DataTable caseDetails, int caseID, string connection)
         {
             CaseId = caseID;
             connectionString = connection;
+            email = Email;
             this.connection = new SqlConnection(connectionString);
             InitializeComponent();
             if (caseDetails.Rows.Count > 0)
@@ -134,12 +135,8 @@ namespace Legal_Case
             string newUpload = uploadText.Text;
             UpdateCaseDetails(selectedCaseID, newStatus, newProgress, newDescription, newDocument, newUpload);
             MessageBox.Show("Case details updated successfully.", "Update Complete", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            if (connection != null && connection.State == ConnectionState.Open)
-            {
-                connection.Close();
-                connection.Dispose();
-            }
-            Application.Exit();
+            Form2 form2 = new Form2(email, connectionString);
+            form2.Show();
         }
 
         private void caseDescription_TextChanged(object sender, EventArgs e) 
@@ -163,6 +160,11 @@ namespace Legal_Case
         }
 
         private void caseDescription_TextChanged_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox1_Click_1(object sender, EventArgs e)
         {
 
         }
