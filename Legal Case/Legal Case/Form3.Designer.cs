@@ -71,7 +71,6 @@
             caseDescription.ScrollBars = ScrollBars.Both;
             caseDescription.Size = new Size(316, 202);
             caseDescription.TabIndex = 2;
-            caseDescription.TextChanged += caseDescription_TextChanged_1;
             // 
             // statusText
             // 
@@ -100,7 +99,6 @@
             label2.Size = new Size(162, 29);
             label2.TabIndex = 5;
             label2.Text = "Case Description";
-            label2.Click += label2_Click;
             // 
             // label3
             // 
@@ -191,7 +189,6 @@
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 15;
             pictureBox1.TabStop = false;
-            pictureBox1.Click += pictureBox1_Click_1;
             // 
             // button1
             // 
@@ -203,7 +200,6 @@
             button1.TabIndex = 16;
             button1.Text = "x";
             button1.UseVisualStyleBackColor = false;
-            button1.Click += button1_Click_1;
             // 
             // panel1
             // 

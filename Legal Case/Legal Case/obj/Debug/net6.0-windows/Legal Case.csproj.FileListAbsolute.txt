@@ -1,10 +1,6 @@
 E:\LCMS\Legal Case\Legal Case\bin\Debug\net6.0-windows\Legal Case.exe
 E:\LCMS\Legal Case\Legal Case\bin\Debug\net6.0-windows\Database1.mdf
 E:\LCMS\Legal Case\Legal Case\bin\Debug\net6.0-windows\Database1_log.ldf
-E:\LCMS\Legal Case\Legal Case\bin\Debug\net6.0-windows\Legal Case.deps.json
-E:\LCMS\Legal Case\Legal Case\bin\Debug\net6.0-windows\Legal Case.runtimeconfig.json
-E:\LCMS\Legal Case\Legal Case\bin\Debug\net6.0-windows\Legal Case.dll
-E:\LCMS\Legal Case\Legal Case\bin\Debug\net6.0-windows\Legal Case.pdb
 E:\LCMS\Legal Case\Legal Case\bin\Debug\net6.0-windows\Ninject.dll
 E:\LCMS\Legal Case\Legal Case\bin\Debug\net6.0-windows\System.Data.SqlClient.dll
 E:\LCMS\Legal Case\Legal Case\bin\Debug\net6.0-windows\runtimes\win-arm64\native\sni.dll
@@ -36,5 +32,9 @@ E:\LCMS\Legal Case\Legal Case\obj\Debug\net6.0-windows\Legal Case.csproj.CopyCom
 E:\LCMS\Legal Case\Legal Case\obj\Debug\net6.0-windows\Legal Case.dll
 E:\LCMS\Legal Case\Legal Case\obj\Debug\net6.0-windows\refint\Legal Case.dll
 E:\LCMS\Legal Case\Legal Case\obj\Debug\net6.0-windows\Legal Case.pdb
+E:\LCMS\Legal Case\Legal Case\bin\Debug\net6.0-windows\Legal Case.deps.json
+E:\LCMS\Legal Case\Legal Case\bin\Debug\net6.0-windows\Legal Case.runtimeconfig.json
+E:\LCMS\Legal Case\Legal Case\bin\Debug\net6.0-windows\Legal Case.dll
+E:\LCMS\Legal Case\Legal Case\bin\Debug\net6.0-windows\Legal Case.pdb
 E:\LCMS\Legal Case\Legal Case\obj\Debug\net6.0-windows\Legal Case.genruntimeconfig.cache
 E:\LCMS\Legal Case\Legal Case\obj\Debug\net6.0-windows\ref\Legal Case.dll

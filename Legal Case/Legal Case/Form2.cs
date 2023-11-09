@@ -221,11 +221,6 @@ namespace Legal_Case
             return hasPermission;
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void Form2_Load(object sender, EventArgs e)
         {
             dataGridView1.ClearSelection();

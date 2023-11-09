@@ -100,7 +100,6 @@
             CaseDescription.Name = "CaseDescription";
             CaseDescription.Size = new Size(222, 110);
             CaseDescription.TabIndex = 4;
-            CaseDescription.TextChanged += CaseDescription_TextChanged;
             // 
             // label3
             // 
@@ -165,7 +164,6 @@
             Name = "Form4";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Form4";
-            Load += Form4_Load;
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
             ResumeLayout(false);

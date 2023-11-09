@@ -124,20 +124,5 @@ namespace Legal_Case
         {
             Create_Case();
         }
-
-        private void CaseDescription_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Form4_Load(object sender, EventArgs e)
-        {
-
-        }
     }
 }

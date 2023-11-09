@@ -75,7 +75,6 @@
             passwordText.PlaceholderText = "  Password";
             passwordText.Size = new Size(182, 39);
             passwordText.TabIndex = 10;
-            passwordText.TextChanged += passwordText_TextChanged;
             // 
             // nameText
             // 
@@ -92,7 +91,6 @@
             nameText.PlaceholderText = "  Email ID";
             nameText.Size = new Size(182, 39);
             nameText.TabIndex = 9;
-            nameText.TextChanged += nameText_TextChanged;
             // 
             // panel1
             // 
@@ -140,7 +138,6 @@
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 12;
             pictureBox1.TabStop = false;
-            pictureBox1.Click += pictureBox1_Click;
             // 
             // panel2
             // 
