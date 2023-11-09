@@ -16,10 +16,12 @@ namespace Legal_Case
     {
         private string email;
         private string connectionString;
+        private SqlConnection connection;
         public Form2(string userEmail, string String)
         {
             email = userEmail;
             connectionString = String;
+            connection = new SqlConnection(connectionString);
             InitializeComponent();
             PopulateCaseData();
         }
@@ -66,48 +68,72 @@ namespace Legal_Case
         }
         private DataTable RetrieveCaseDetails(int caseID)
         {
+            DataTable dataTable = null;
             string query = @"SELECT C.CaseName, C.Description, C.Status, C.Progress, D.DocumentName, D.UploadDate
                      FROM [Case] AS C
                      LEFT JOIN [Document] AS D ON C.CaseID = D.CaseID
                      WHERE C.CaseID = @CaseID";
 
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            connection.Open();
+            try
             {
-                connection.Open();
-
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
                     command.Parameters.AddWithValue("@CaseID", caseID);
                     SqlDataAdapter adapter = new SqlDataAdapter(command);
-                    DataTable dataTable = new DataTable();
+                    dataTable = new DataTable();
                     adapter.Fill(dataTable);
 
                     return dataTable;
+                }
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine("An error occurred while retrieving case data: " + ex.Message);
+                return dataTable;
+            }
+            finally
+            {
+                if (connection != null && connection.State == ConnectionState.Open)
+                {
+                    connection.Close();
                 }
             }
         }
 
         private DataTable RetrieveCaseData()
         {
+            DataTable dataTable = null;
             string query = @"SELECT C.CaseID, C.CaseName, C.Status, C.Progress
-                             FROM [Case] AS C
-                             INNER JOIN [User] AS U ON C.AssignedAttorneyID = U.UserID
-                             WHERE U.Email = @Email";
+                               FROM [Case] AS C
+                               INNER JOIN [User] AS U ON C.AssignedAttorneyID = U.UserID
+                               WHERE U.Email = @Email";
 
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                connection.Open();
-
+            connection.Open();
+            try
+            { 
+            
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
                     command.Parameters.AddWithValue("@Email", email);
                     SqlDataAdapter adapter = new SqlDataAdapter(command);
-                    DataTable dataTable = new DataTable();
+                    dataTable = new DataTable();
                     adapter.Fill(dataTable);
-
-                    return dataTable;
                 }
             }
+            catch (Exception ex)
+            {
+                Console.WriteLine("An error occurred while retrieving case data: " + ex.Message);
+            }
+            finally
+            {
+                if (connection != null && connection.State == ConnectionState.Open)
+                {
+                    connection.Close();
+                }
+            }
+
+            return dataTable;
         }
 
         private void PopulateCaseData()
@@ -138,18 +164,17 @@ namespace Legal_Case
 
         private bool HasPermission(string permissionName)
         {
-
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            bool hasPermission = false;
+            connection.Open();
+            try
             {
-                connection.Open();
-
-                string query = @"SELECT COUNT(*) 
-                        FROM [User] AS U
-                        INNER JOIN [UserRole] AS UR ON U.UserID = UR.UserID
-                        INNER JOIN [Role] AS R ON UR.RoleID = R.RoleID
-                        INNER JOIN [RolePermissions] AS RP ON R.RoleID = RP.RoleID
-                        INNER JOIN [Permissions] AS P ON RP.PermissionID = P.PermissionID
-                        WHERE U.Email = @Email AND P.PermissionName = @PermissionName";
+                string query = @"SELECT COUNT(*)
+                                FROM [User] AS U
+                                INNER JOIN [UserRole] AS UR ON U.UserID = UR.UserID
+                                INNER JOIN [Role] AS R ON UR.RoleID = R.RoleID
+                                INNER JOIN [RolePermissions] AS RP ON R.RoleID = RP.RoleID
+                                INNER JOIN [Permissions] AS P ON RP.PermissionID = P.PermissionID
+                                WHERE U.Email = @Email AND P.PermissionName = @PermissionName";
 
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
@@ -158,9 +183,22 @@ namespace Legal_Case
 
                     int count = Convert.ToInt32(command.ExecuteScalar());
 
-                    return count > 0;
+                    hasPermission = count > 0;
                 }
             }
+            catch (Exception ex)
+            {
+                Console.WriteLine("An error occurred while checking permissions: " + ex.Message);
+            }
+            finally
+            {
+                if (connection != null && connection.State == ConnectionState.Open)
+                {
+                    connection.Close();
+                }
+            }
+
+            return hasPermission;
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -176,6 +214,10 @@ namespace Legal_Case
 
         private void button1_Click(object sender, EventArgs e)
         {
+            if (connection != null && connection.State == ConnectionState.Open)
+            {
+                connection.Close();
+            }
             Application.Exit();
         }
     }

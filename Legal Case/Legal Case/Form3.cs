@@ -15,10 +15,13 @@ namespace Legal_Case
     {
         private int CaseId;
         private string connectionString;
+        private SqlConnection connection;
+
         public Form3(DataTable caseDetails, int caseID, string connection)
         {
             CaseId = caseID;
             connectionString = connection;
+            this.connection = new SqlConnection(connectionString);
             InitializeComponent();
             if (caseDetails.Rows.Count > 0)
             {
@@ -37,13 +40,41 @@ namespace Legal_Case
         }
         private void UpdateCaseDetails(int caseID, string newStatus, string newProgress, string newDescription, string newDocument, string newUpload)
         {
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            connection.Open();
+            using (SqlTransaction transaction = connection.BeginTransaction())
             {
-                connection.Open();
-
-                using (SqlTransaction transaction = connection.BeginTransaction())
+                try
                 {
-                    try
+                    bool caseExistsInCaseTable = false;
+                    bool caseExistsInDocumentTable = false;
+
+                    using (SqlCommand command = new SqlCommand("SELECT CASEID FROM [Case] WHERE CaseID = @caseID", connection, transaction))
+                    {
+                        command.Parameters.AddWithValue("@caseID", caseID);
+                        SqlDataReader reader = command.ExecuteReader();
+
+                        if (reader.Read())
+                        {
+                            caseExistsInCaseTable = true;
+                        }
+
+                        reader.Close();
+                    }
+
+                    using (SqlCommand command = new SqlCommand("SELECT CaseID FROM [Document] WHERE CaseID = @caseID", connection, transaction))
+                    {
+                        command.Parameters.AddWithValue("@caseID", caseID);
+                        SqlDataReader reader = command.ExecuteReader();
+
+                        if (reader.Read())
+                        {
+                            caseExistsInDocumentTable = true;
+                        }
+
+                        reader.Close();
+                    }
+
+                    if (caseExistsInCaseTable)
                     {
                         using (SqlCommand command = new SqlCommand("UPDATE [Case] SET Status = @newStatus, Progress = @newProgress, Description = @newDescription WHERE CaseID = @caseID", connection, transaction))
                         {
@@ -53,7 +84,10 @@ namespace Legal_Case
                             command.Parameters.AddWithValue("@caseID", caseID);
                             command.ExecuteNonQuery();
                         }
+                    }
 
+                    if (caseExistsInDocumentTable)
+                    {
                         using (SqlCommand command = new SqlCommand("UPDATE [Document] SET DocumentName = @newDocument, UploadDate = @newUpload WHERE CaseID = @caseID", connection, transaction))
                         {
                             command.Parameters.AddWithValue("@newDocument", newDocument);
@@ -61,13 +95,30 @@ namespace Legal_Case
                             command.Parameters.AddWithValue("@caseID", caseID);
                             command.ExecuteNonQuery();
                         }
-
-                        transaction.Commit();
                     }
-                    catch (Exception ex)
+                    else if (caseExistsInCaseTable == false)
                     {
-                        Console.WriteLine("An error occurred: " + ex.Message);
-                        transaction.Rollback();
+                        using (SqlCommand command = new SqlCommand("INSERT INTO [Document] (CaseID, DocumentName, UploadDate) VALUES (@caseID, @newDocument, GETDATE())", connection, transaction))
+                        {
+                            command.Parameters.AddWithValue("@caseID", caseID);
+                            command.Parameters.AddWithValue("@newDocument", newDocument);
+                            command.Parameters.AddWithValue("@newUpload", newUpload);
+                            command.ExecuteNonQuery();
+                        }
+                    }
+
+                    transaction.Commit();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("An error occurred: " + ex.Message);
+                    transaction.Rollback();
+                }
+                finally
+                {
+                    if (connection != null && connection.State == ConnectionState.Open)
+                    {
+                        connection.Close();
                     }
                 }
             }
@@ -83,10 +134,15 @@ namespace Legal_Case
             string newUpload = uploadText.Text;
             UpdateCaseDetails(selectedCaseID, newStatus, newProgress, newDescription, newDocument, newUpload);
             MessageBox.Show("Case details updated successfully.", "Update Complete", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            this.Close();
+            if (connection != null && connection.State == ConnectionState.Open)
+            {
+                connection.Close();
+                connection.Dispose();
+            }
+            Application.Exit();
         }
 
-        private void caseDescription_TextChanged(object sender, EventArgs e)
+        private void caseDescription_TextChanged(object sender, EventArgs e) 
         {
 
         }

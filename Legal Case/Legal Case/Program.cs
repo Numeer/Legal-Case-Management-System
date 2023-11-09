@@ -1,10 +1,14 @@
+using Ninject.Infrastructure.Disposal;
 using System;
+using System.Data;
 using System.Data.SqlClient;
+using System.Diagnostics;
 using System.Windows.Forms;
 namespace Legal_Case
 {
     internal static class Program
     {
+        private static SqlConnection connection;
         /// <summary>
         ///  The main entry point for the application.
         /// </summary>
@@ -14,24 +18,42 @@ namespace Legal_Case
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
 
-            //string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"E:\\LCMS\\Legal Case\\Legal Case\\Database1.mdf\";Integrated Security=True";
-            string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"C:\\Users\\Gold\\LCMS\\Legal-Case-Management-System\\Legal Case\\Legal Case\\Database1.mdf\";Integrated Security=True";
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"E:\\LCMS\\Legal Case\\Legal Case\\Database1.mdf\";Integrated Security=True";
+            //string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"C:\\Users\\Gold\\LCMS\\Legal-Case-Management-System\\Legal Case\\Legal Case\\Database1.mdf\";Integrated Security=True";
+            try
+            {
+                connection = new SqlConnection(connectionString);
+                connection.Open();
+                Debug.WriteLine("Database connection successful.");
+                // You can perform further database operations here.
+
+                ApplicationConfiguration.Initialize();
+                Application.Run(new Form1());
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("Error: " + ex.Message);
+            }
+            finally
             {
                 try
                 {
-                    connection.Open();
-                    Console.WriteLine("Database connection successful.");
-                    // You can perform further database operations here.
+                    
+                    if (connection != null && connection.State == ConnectionState.Open)
+                    {
+                        connection.Close();
+                        connection.Dispose();
+                    }
 
-                    ApplicationConfiguration.Initialize();
-                    Application.Run(new Form1());
+                    Debug.WriteLine("Application is exiting. Clean up resources...");
+
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine("Error: " + ex.Message);
+                    Debug.WriteLine("Error during cleanup: " + ex.Message);
                 }
             }
+
         }
     }
 }

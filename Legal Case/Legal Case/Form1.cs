@@ -1,3 +1,4 @@
+using System.Data;
 using System.Data.SqlClient;
 
 namespace Legal_Case
@@ -5,11 +6,15 @@ namespace Legal_Case
     public partial class Form1 : Form
     {
         private string connectionString;
+        private SqlConnection connection;
 
         public Form1()
         {
-            connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"C:\\Users\\Gold\\LCMS\\Legal-Case-Management-System\\Legal Case\\Legal Case\\Database1.mdf\";Integrated Security=True";
+            connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"E:\\LCMS\\Legal Case\\Legal Case\\Database1.mdf\";Integrated Security=True";
+            //connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"C:\\Users\\Gold\\LCMS\\Legal-Case-Management-System\\Legal Case\\Legal Case\\Database1.mdf\";Integrated Security=True";
             InitializeComponent();
+            connection = new SqlConnection(connectionString);
+
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -39,21 +44,17 @@ namespace Legal_Case
         }
         private bool ValidateUser(string email, string password)
         {
-            //string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"E:\\LCMS\\Legal Case\\Legal Case\\Database1.mdf\";Integrated Security=True";
             try
             {
-                using (SqlConnection connection = new SqlConnection(connectionString))
+                connection.Open();
+                string query = "SELECT COUNT(*) FROM [User] WHERE [Email] = @Email AND [Password] = @Password";
+                using (SqlCommand command = new SqlCommand(query, connection))
                 {
-                    connection.Open();
-                    string query = "SELECT COUNT(*) FROM [User] WHERE [Email] = @Email AND [Password] = @Password";
-                    using (SqlCommand command = new SqlCommand(query, connection))
-                    {
-                        command.Parameters.AddWithValue("@Email", email);
-                        command.Parameters.AddWithValue("@Password", password);
-                        int result = (int)command.ExecuteScalar();
-                        Console.WriteLine(result);
-                        return result > 0;
-                    }
+                    command.Parameters.AddWithValue("@Email", email);
+                    command.Parameters.AddWithValue("@Password", password);
+                    int result = (int)command.ExecuteScalar();
+                    Console.WriteLine(result);
+                    return result > 0;
                 }
             }
             catch (SqlException ex)
@@ -66,8 +67,15 @@ namespace Legal_Case
                 Console.WriteLine("Error: " + ex.Message);
                 return false;
             }
-
+            finally
+            {
+                if (connection != null && connection.State == ConnectionState.Open)
+                {
+                    connection.Close();
+                }
+            }
         }
+
 
         private void name_Click(object sender, EventArgs e)
         {
@@ -111,6 +119,10 @@ namespace Legal_Case
 
         private void closeBtn_Click(object sender, EventArgs e)
         {
+            if (connection != null && connection.State == ConnectionState.Open)
+            {
+                connection.Close();
+            }
             this.Close();
         }
     }
