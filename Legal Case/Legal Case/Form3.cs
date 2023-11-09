@@ -15,10 +15,12 @@ namespace Legal_Case
     {
         private int CaseId;
         private string connectionString;
-        public Form3(DataTable caseDetails, int caseID, string connection)
+        private string email;
+        public Form3(String Email, DataTable caseDetails, int caseID, string connection)
         {
             CaseId = caseID;
             connectionString = connection;
+            email = Email;
             InitializeComponent();
             if (caseDetails.Rows.Count > 0)
             {
@@ -84,6 +86,8 @@ namespace Legal_Case
             UpdateCaseDetails(selectedCaseID, newStatus, newProgress, newDescription, newDocument, newUpload);
             MessageBox.Show("Case details updated successfully.", "Update Complete", MessageBoxButtons.OK, MessageBoxIcon.Information);
             this.Close();
+            Form2 form2 = new Form2(email, connectionString);
+            form2.Show();
         }
 
         private void caseDescription_TextChanged(object sender, EventArgs e)
@@ -107,6 +111,11 @@ namespace Legal_Case
         }
 
         private void caseDescription_TextChanged_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox1_Click_1(object sender, EventArgs e)
         {
 
         }

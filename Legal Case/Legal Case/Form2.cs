@@ -10,6 +10,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
+
+
 namespace Legal_Case
 {
     public partial class Form2 : Form
@@ -33,13 +35,12 @@ namespace Legal_Case
                     if (dataGridView1.Columns[e.ColumnIndex].HeaderText == "Update")
                     {
                         int selectedCaseID = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells["CaseID"].Value);
-
                         if (HasPermission("UpdateCase"))
                         {
                             DataTable caseDetails = RetrieveCaseDetails(selectedCaseID);
-                            Form3 form3 = new Form3(caseDetails, selectedCaseID, connectionString);
+                            Form3 form3 = new Form3(email, caseDetails, selectedCaseID, connectionString);
                             form3.Show();
-                            this.Hide();
+                            this.Close();
                         }
                         else
                         {
@@ -49,12 +50,31 @@ namespace Legal_Case
                     else if (dataGridView1.Columns[e.ColumnIndex].HeaderText == "Delete")
                     {
                         int selectedCaseID = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells["CaseID"].Value);
-
                         if (HasPermission("DeleteCase"))
                         {
-                            DataTable caseDetails = RetrieveCaseDetails(selectedCaseID);
-                            MessageBox.Show("Case successfully deleted", "", MessageBoxButtons.OK);
-                            //To be Implement :(
+                            using (SqlConnection conn = new SqlConnection(connectionString))
+                            {
+                                conn.Open();
+                                using (SqlTransaction transaction = conn.BeginTransaction())
+                                {
+                                    try
+                                    {
+                                        string query = @"Delete from [Case] WHERE CaseID = @ID";
+                                        using (SqlCommand command = new SqlCommand(query, conn, transaction))
+                                        {
+                                            command.Parameters.AddWithValue("@ID", selectedCaseID);
+                                            command.ExecuteNonQuery();
+                                            MessageBox.Show("Case successfully deleted", "", MessageBoxButtons.OK);
+                                            transaction.Commit();
+                                        }
+                                    }
+                                    catch (Exception ex)
+                                    {
+                                        Console.WriteLine("An error occurred: " + ex.Message);
+                                        transaction.Rollback();
+                                    }
+                                }
+                            }
                         }
                         else
                         {
@@ -175,6 +195,26 @@ namespace Legal_Case
         }
 
         private void button1_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void AddCaseBtn_Click(object sender, EventArgs e)
+        {
+            if (HasPermission("CreateCase"))
+            {
+                this.Close();
+                Form4 form4 = new Form4(email, connectionString);
+                form4.Show();
+            }
+            else
+            {
+                MessageBox.Show("You do not have permission to create cases.", "Permission Denied", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+
+        }
+
+        private void Logout_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }
