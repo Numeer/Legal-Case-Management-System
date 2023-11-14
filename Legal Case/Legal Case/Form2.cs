@@ -54,28 +54,32 @@ namespace Legal_Case
                         int selectedCaseID = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells["CaseID"].Value);
                         if (HasPermission("DeleteCase"))
                         {
-                            using (SqlConnection conn = new SqlConnection(connectionString))
+                            if (connection != null && connection.State == ConnectionState.Closed)
                             {
-                                conn.Open();
-                                using (SqlTransaction transaction = conn.BeginTransaction())
+                                connection.Open();
+                            }
+                            using (SqlTransaction transaction = connection.BeginTransaction())
+                            {
+                                try
                                 {
-                                    try
+                                    string query = @"Delete from [Case] WHERE CaseID = @ID";
+                                    using (SqlCommand command = new SqlCommand(query, connection, transaction))
                                     {
-                                        string query = @"Delete from [Case] WHERE CaseID = @ID";
-                                        using (SqlCommand command = new SqlCommand(query, conn, transaction))
-                                        {
-                                            command.Parameters.AddWithValue("@ID", selectedCaseID);
-                                            command.ExecuteNonQuery();
-                                            MessageBox.Show("Case successfully deleted", "", MessageBoxButtons.OK);
-                                            transaction.Commit();
-                                        }
-                                    }
-                                    catch (Exception ex)
-                                    {
-                                        Console.WriteLine("An error occurred: " + ex.Message);
-                                        transaction.Rollback();
+                                        command.Parameters.AddWithValue("@ID", selectedCaseID);
+                                        command.ExecuteNonQuery();
+                                        MessageBox.Show("Case successfully deleted", "", MessageBoxButtons.OK);
+                                        transaction.Commit();
                                     }
                                 }
+                                catch (Exception ex)
+                                {
+                                    Console.WriteLine("An error occurred: " + ex.Message);
+                                    transaction.Rollback();
+                                }
+                            }
+                            if (connection != null && connection.State == ConnectionState.Open)
+                            {
+                                connection.Close();
                             }
                         }
                         else
@@ -93,10 +97,12 @@ namespace Legal_Case
                      FROM [Case] AS C
                      LEFT JOIN [Document] AS D ON C.CaseID = D.CaseID
                      WHERE C.CaseID = @CaseID";
-
-            connection.Open();
             try
             {
+                if (connection != null && connection.State == ConnectionState.Closed)
+                {
+                    connection.Open();
+                }
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
                     command.Parameters.AddWithValue("@CaseID", caseID);
@@ -128,17 +134,19 @@ namespace Legal_Case
                                FROM [Case] AS C
                                INNER JOIN [User] AS U ON C.AssignedAttorneyID = U.UserID
                                WHERE U.Email = @Email";
-
-            connection.Open();
             try
-            { 
-            
+            {
+                if (connection != null && connection.State == ConnectionState.Closed)
+                {
+                    connection.Open();
+                }
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
                     command.Parameters.AddWithValue("@Email", email);
                     SqlDataAdapter adapter = new SqlDataAdapter(command);
                     dataTable = new DataTable();
                     adapter.Fill(dataTable);
+                    return dataTable;
                 }
             }
             catch (Exception ex)
@@ -152,7 +160,6 @@ namespace Legal_Case
                     connection.Close();
                 }
             }
-
             return dataTable;
         }
 
@@ -185,9 +192,13 @@ namespace Legal_Case
         private bool HasPermission(string permissionName)
         {
             bool hasPermission = false;
-            connection.Open();
+            
             try
             {
+                if (connection != null && connection.State == ConnectionState.Closed)
+                {
+                    connection.Open();
+                }
                 string query = @"SELECT COUNT(*)
                                 FROM [User] AS U
                                 INNER JOIN [UserRole] AS UR ON U.UserID = UR.UserID
@@ -253,6 +264,10 @@ namespace Legal_Case
 
         private void Logout_Click(object sender, EventArgs e)
         {
+            if (connection != null && connection.State == ConnectionState.Open)
+            {
+                connection.Close();
+            }
             Application.Exit();
         }
     }

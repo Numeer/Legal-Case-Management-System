@@ -7,6 +7,7 @@ using System.Drawing;
 using System.Linq;
 using System.Reflection.PortableExecutable;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
@@ -22,10 +23,10 @@ namespace Legal_Case
             InitializeComponent();
             Email = email;
             connectionString = connection;
-            using (SqlConnection conn = new SqlConnection(connection))
+            using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 conn.Open();
-                using (SqlCommand cmd = new SqlCommand("SELECT FirstName FROM [User] U JOIN [UserRole] R on U.UserID = R.UserID WHERE R.RoleID = 2", conn))
+                using (SqlCommand cmd = new SqlCommand("SELECT CONCAT(FirstName,' ',LastName,'    ','(ID: ',U.UserID,')') FROM [User] U JOIN [UserRole] R on U.UserID = R.UserID WHERE R.RoleID = 2", conn))
                 {
                     using (SqlDataReader reader = cmd.ExecuteReader())
                     {
@@ -45,79 +46,70 @@ namespace Legal_Case
         {
             string title = CaseTitle.Text.ToString();
             string description = CaseDescription.Text.ToString();
-            string? attorney = CaseAttroney.SelectedItem.ToString();
+            string attorney = CaseAttroney.SelectedItem.ToString();
+            Match match = Regex.Match(attorney, @"\bID: (\d+)\b");
             int attorneyID = 0;
-            using (SqlConnection conn = new SqlConnection(connectionString))
+            if (match.Success)
             {
-                conn.Open();
-                using (SqlCommand cmd = new SqlCommand(@"SELECT UserID FROM [User] WHERE FirstName = @attorney", conn))
+                string userIdString = match.Groups[1].Value;
+                if (int.TryParse(userIdString, out attorneyID))
                 {
-                    cmd.Parameters.AddWithValue("@attorney", attorney);
-                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    using (SqlConnection conn = new SqlConnection(connectionString))
                     {
-                        if (reader.Read())
+                        conn.Open();
+                        string query = @"INSERT INTO [CASE] VALUES(@name, @description, @attorney, @status, @progress)";
+                        using (SqlCommand cmd = new SqlCommand(query, conn))
                         {
-                            attorneyID = reader.GetInt32(0);
+                            cmd.Parameters.AddWithValue("@name", title);
+                            cmd.Parameters.AddWithValue("@description", description);
+                            cmd.Parameters.AddWithValue("@attorney", attorneyID);
+                            cmd.Parameters.AddWithValue("@status", "Open");
+                            cmd.Parameters.AddWithValue("@progress", 0);
+                            cmd.ExecuteNonQuery();
                         }
-                        reader.Close();
+
+                        string status = "";
+                        int id = 0;
+                        string query2 = @"SELECT CaseID, Status FROM [Case] WHERE CaseName = @name AND Description = @description AND AssignedAttorneyID = @attorney";
+                        using (SqlCommand cmd = new SqlCommand(query2, conn))
+                        {
+                            cmd.Parameters.AddWithValue("@name", title);
+                            cmd.Parameters.AddWithValue("@description", description);
+                            cmd.Parameters.AddWithValue("@attorney", attorneyID);
+                            SqlDataReader reader = cmd.ExecuteReader();
+                            if (reader.Read())
+                            {
+                                id = reader.GetInt32(0);
+                                status = reader.GetString(1);
+                            }
+                            reader.Close();
+                        }
+                        if (status == "Open")
+                            status = "Not Started";
+                        else if (status == "Closed")
+                            status = "Completed";
+                        string query3 = @"INSERT INTO [Task] VALUES(@caseId, @description, @attorney, @deadline, @status)";
+                        using (SqlCommand cmd = new SqlCommand(query3, conn))
+                        {
+                            cmd.Parameters.AddWithValue("@caseId", id);
+                            cmd.Parameters.AddWithValue("@description", description);
+                            cmd.Parameters.AddWithValue("@attorney", attorneyID);
+                            cmd.Parameters.AddWithValue("@deadline", DateTime.Now.AddMonths(6));
+                            cmd.Parameters.AddWithValue("@status", status);
+
+                            cmd.ExecuteNonQuery();
+                            MessageBox.Show("Case successfully created", "", MessageBoxButtons.OK);
+                        }
+                        this.Close();
+                        Form2 form2 = new Form2(Email, connectionString);
+                        form2.Show();
                     }
                 }
-
-                string query = @"INSERT INTO [CASE] VALUES(@name, @description, @attorney, @status, @progress)";
-                using (SqlCommand cmd = new SqlCommand(query, conn))
-                {
-                    cmd.Parameters.AddWithValue("@name", title);
-                    cmd.Parameters.AddWithValue("@description", description);
-                    cmd.Parameters.AddWithValue("@attorney", attorneyID);
-                    cmd.Parameters.AddWithValue("@status", "Open");
-                    cmd.Parameters.AddWithValue("@progress", 0);
-                    cmd.ExecuteNonQuery();
-                }
-
-                string status = "";
-                int id = 0;
-                string query2 = @"SELECT CaseID, Status FROM [Case] WHERE CaseName = @name AND Description = @description AND AssignedAttorneyID = @attorney";
-                using (SqlCommand cmd = new SqlCommand(query2, conn))
-                {
-                    cmd.Parameters.AddWithValue("@name", title);
-                    cmd.Parameters.AddWithValue("@description", description);
-                    cmd.Parameters.AddWithValue("@attorney", attorneyID);
-                    SqlDataReader reader = cmd.ExecuteReader();
-                    if (reader.Read())
-                    {
-                        id = reader.GetInt32(0);
-                        status = reader.GetString(1);
-                    }
-                    reader.Close();
-                }
-                if (status == "Open")
-                    status = "Not Started";
-                else if (status == "Closed")
-                    status = "Completed";
-                string query3 = @"INSERT INTO [Task] VALUES(@caseId, @description, @attorney, @deadline, @status)";
-                using (SqlCommand cmd = new SqlCommand(query3, conn))
-                {
-                    cmd.Parameters.AddWithValue("@caseId", id);
-                    cmd.Parameters.AddWithValue("@description", description);
-                    cmd.Parameters.AddWithValue("@attorney", attorneyID);
-                    cmd.Parameters.AddWithValue("@deadline", DateTime.Now.AddMonths(6));
-                    cmd.Parameters.AddWithValue("@status", status);
-
-                    cmd.ExecuteNonQuery();
-                    MessageBox.Show("Case successfully created", "", MessageBoxButtons.OK);
-                }
-                conn.Close();
-                this.Close();
-                Form2 form2 = new Form2(Email, connectionString);
-                form2.Show();
-
             }
         }
         private void CloseBtn_Click(object sender, EventArgs e)
         {
-            this.Close();
-            Form2 form2 = new Form2(Email, connectionString);
-            form2.Show();
+            Application.Exit();
         }
 
         private void CreateBtn_Click(object sender, EventArgs e)
