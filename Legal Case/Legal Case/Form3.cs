@@ -97,7 +97,7 @@ namespace Legal_Case
                             command.ExecuteNonQuery();
                         }
                     }
-                    else if (caseExistsInCaseTable == false)
+                    else if (caseExistsInDocumentTable == false)
                     {
                         using (SqlCommand command = new SqlCommand("INSERT INTO [Document] (CaseID, DocumentName, UploadDate) VALUES (@caseID, @newDocument, GETDATE())", connection, transaction))
                         {

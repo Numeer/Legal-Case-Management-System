@@ -1184,11 +1184,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\LCMS\\Legal Case\\Legal Case\\Legal Case.csproj",
+      "projectUniqueName": "E:\\Legal-Case-Management-System\\Legal Case\\Legal Case\\Legal Case.csproj",
       "projectName": "Legal Case",
-      "projectPath": "E:\\LCMS\\Legal Case\\Legal Case\\Legal Case.csproj",
+      "projectPath": "E:\\Legal-Case-Management-System\\Legal Case\\Legal Case\\Legal Case.csproj",
       "packagesPath": "C:\\Users\\hp\\.nuget\\packages\\",
-      "outputPath": "E:\\LCMS\\Legal Case\\Legal Case\\obj\\",
+      "outputPath": "E:\\Legal-Case-Management-System\\Legal Case\\Legal Case\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

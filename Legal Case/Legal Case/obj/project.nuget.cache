@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "m077rne1kQQBDynRCF65Te8517+9eWCfDTaMDu46GNny1l0agq0hCiZ1hWtj1Yx9Y5HMb9LRQPuze+xsJcM4fw==",
+  "dgSpecHash": "UH9yvqS7IdvELskiY/NjuskKpPeUDHVdToOM/5q6ug9pBawKkfCnfECmnXyaPdu+y3JhxdCEGQ5BwjRVwraOtA==",
   "success": true,
-  "projectFilePath": "E:\\LCMS\\Legal Case\\Legal Case\\Legal Case.csproj",
+  "projectFilePath": "E:\\Legal-Case-Management-System\\Legal Case\\Legal Case\\Legal Case.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\hp\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.0\\microsoft.netcore.platforms.3.1.0.nupkg.sha512",
     "C:\\Users\\hp\\.nuget\\packages\\microsoft.netcore.targets\\1.1.0\\microsoft.netcore.targets.1.1.0.nupkg.sha512",

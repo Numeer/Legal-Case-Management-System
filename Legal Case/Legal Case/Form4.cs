@@ -29,7 +29,7 @@ namespace Legal_Case
                 {
                     using (SqlDataReader reader = cmd.ExecuteReader())
                     {
-                        if (reader.Read())
+                        if (reader.HasRows)
                         {
                             while (reader.Read())
                             {

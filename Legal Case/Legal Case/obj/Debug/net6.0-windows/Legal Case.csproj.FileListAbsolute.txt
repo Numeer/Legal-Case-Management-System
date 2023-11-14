@@ -38,3 +38,43 @@ E:\LCMS\Legal Case\Legal Case\bin\Debug\net6.0-windows\Legal Case.dll
 E:\LCMS\Legal Case\Legal Case\bin\Debug\net6.0-windows\Legal Case.pdb
 E:\LCMS\Legal Case\Legal Case\obj\Debug\net6.0-windows\Legal Case.genruntimeconfig.cache
 E:\LCMS\Legal Case\Legal Case\obj\Debug\net6.0-windows\ref\Legal Case.dll
+E:\Legal-Case-Management-System\Legal Case\Legal Case\bin\Debug\net6.0-windows\Legal Case.exe
+E:\Legal-Case-Management-System\Legal Case\Legal Case\bin\Debug\net6.0-windows\Database1.mdf
+E:\Legal-Case-Management-System\Legal Case\Legal Case\bin\Debug\net6.0-windows\Database1_log.ldf
+E:\Legal-Case-Management-System\Legal Case\Legal Case\bin\Debug\net6.0-windows\Ninject.dll
+E:\Legal-Case-Management-System\Legal Case\Legal Case\bin\Debug\net6.0-windows\System.Data.SqlClient.dll
+E:\Legal-Case-Management-System\Legal Case\Legal Case\bin\Debug\net6.0-windows\runtimes\win-arm64\native\sni.dll
+E:\Legal-Case-Management-System\Legal Case\Legal Case\bin\Debug\net6.0-windows\runtimes\win-x64\native\sni.dll
+E:\Legal-Case-Management-System\Legal Case\Legal Case\bin\Debug\net6.0-windows\runtimes\win-x86\native\sni.dll
+E:\Legal-Case-Management-System\Legal Case\Legal Case\bin\Debug\net6.0-windows\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
+E:\Legal-Case-Management-System\Legal Case\Legal Case\bin\Debug\net6.0-windows\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
+E:\Legal-Case-Management-System\Legal Case\Legal Case\obj\Debug\net6.0-windows\Legal Case.csproj.AssemblyReference.cache
+E:\Legal-Case-Management-System\Legal Case\Legal Case\obj\Debug\net6.0-windows\Interop.TxAgg.dll
+E:\Legal-Case-Management-System\Legal Case\Legal Case\obj\Debug\net6.0-windows\Interop.TxBDD.dll
+E:\Legal-Case-Management-System\Legal Case\Legal Case\obj\Debug\net6.0-windows\Interop.SSCE.dll
+E:\Legal-Case-Management-System\Legal Case\Legal Case\obj\Debug\net6.0-windows\Interop.TxSplit.dll
+E:\Legal-Case-Management-System\Legal Case\Legal Case\obj\Debug\net6.0-windows\Interop.TxDataConvert.dll
+E:\Legal-Case-Management-System\Legal Case\Legal Case\obj\Debug\net6.0-windows\Interop.TxDerived.dll
+E:\Legal-Case-Management-System\Legal Case\Legal Case\obj\Debug\net6.0-windows\Interop.OleDbSrc.dll
+E:\Legal-Case-Management-System\Legal Case\Legal Case\obj\Debug\net6.0-windows\Interop.TxLookup.dll
+E:\Legal-Case-Management-System\Legal Case\Legal Case\obj\Debug\net6.0-windows\Legal Case.csproj.ResolveComReference.cache
+E:\Legal-Case-Management-System\Legal Case\Legal Case\obj\Debug\net6.0-windows\Legal_Case.Form1.resources
+E:\Legal-Case-Management-System\Legal Case\Legal Case\obj\Debug\net6.0-windows\Legal_Case.Form2.resources
+E:\Legal-Case-Management-System\Legal Case\Legal Case\obj\Debug\net6.0-windows\Legal_Case.Form3.resources
+E:\Legal-Case-Management-System\Legal Case\Legal Case\obj\Debug\net6.0-windows\Legal_Case.Form4.resources
+E:\Legal-Case-Management-System\Legal Case\Legal Case\obj\Debug\net6.0-windows\Legal_Case.Properties.Resources.resources
+E:\Legal-Case-Management-System\Legal Case\Legal Case\obj\Debug\net6.0-windows\Legal Case.csproj.GenerateResource.cache
+E:\Legal-Case-Management-System\Legal Case\Legal Case\obj\Debug\net6.0-windows\Legal Case.GeneratedMSBuildEditorConfig.editorconfig
+E:\Legal-Case-Management-System\Legal Case\Legal Case\obj\Debug\net6.0-windows\Legal Case.AssemblyInfoInputs.cache
+E:\Legal-Case-Management-System\Legal Case\Legal Case\obj\Debug\net6.0-windows\Legal Case.AssemblyInfo.cs
+E:\Legal-Case-Management-System\Legal Case\Legal Case\obj\Debug\net6.0-windows\Legal Case.csproj.CoreCompileInputs.cache
+E:\Legal-Case-Management-System\Legal Case\Legal Case\obj\Debug\net6.0-windows\Legal Case.csproj.CopyComplete
+E:\Legal-Case-Management-System\Legal Case\Legal Case\obj\Debug\net6.0-windows\Legal Case.dll
+E:\Legal-Case-Management-System\Legal Case\Legal Case\obj\Debug\net6.0-windows\refint\Legal Case.dll
+E:\Legal-Case-Management-System\Legal Case\Legal Case\obj\Debug\net6.0-windows\Legal Case.pdb
+E:\Legal-Case-Management-System\Legal Case\Legal Case\bin\Debug\net6.0-windows\Legal Case.deps.json
+E:\Legal-Case-Management-System\Legal Case\Legal Case\bin\Debug\net6.0-windows\Legal Case.runtimeconfig.json
+E:\Legal-Case-Management-System\Legal Case\Legal Case\bin\Debug\net6.0-windows\Legal Case.dll
+E:\Legal-Case-Management-System\Legal Case\Legal Case\bin\Debug\net6.0-windows\Legal Case.pdb
+E:\Legal-Case-Management-System\Legal Case\Legal Case\obj\Debug\net6.0-windows\Legal Case.genruntimeconfig.cache
+E:\Legal-Case-Management-System\Legal Case\Legal Case\obj\Debug\net6.0-windows\ref\Legal Case.dll

@@ -11,7 +11,7 @@ namespace Legal_Case
 
         public Form1()
         {
-            connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"E:\\LCMS\\Legal Case\\Legal Case\\Database1.mdf\";Integrated Security=True";
+            connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"E:\\Legal-Case-Management-System\\Legal Case\\Legal Case\\Database1.mdf\";Integrated Security=True";
             //connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"C:\\Users\\Gold\\LCMS\\Legal-Case-Management-System\\Legal Case\\Legal Case\\Database1.mdf\";Integrated Security=True";
             InitializeComponent();
             connection = new SqlConnection(connectionString);
@@ -51,34 +51,41 @@ namespace Legal_Case
 
         private bool CheckLock(string email, string password)
         {
-            try
+            using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();
                 string query1 = "SELECT [UserId],[PasswordAttempts],[IsLocked],[LockedTime] from [User] where [Email] = @Email";
                 using (SqlCommand cmd = new SqlCommand(query1, connection))
                 {
                     cmd.Parameters.AddWithValue("@Email", email);
-                    SqlDataReader reader = cmd.ExecuteReader();
-
-                    if (reader.Read())
+                    using (SqlDataReader reader = cmd.ExecuteReader())
                     {
-                        userID = (int)reader["UserId"];
-                        int passwordAttempts = (int)reader["PasswordAttempts"];
-                        bool isLocked = (bool)reader["IsLocked"];
-
-
-                        if (isLocked)
+                        if (reader.Read())
                         {
-                            DateTime now = DateTime.UtcNow;
-                            if (reader["LockedTime"] != DBNull.Value && (now - (DateTime)reader["LockedTime"]) >= TimeSpan.FromMinutes(30))
+                            userID = (int)reader["UserId"];
+                            int passwordAttempts = (int)reader["PasswordAttempts"];
+                            bool isLocked = (bool)reader["IsLocked"];
+
+                            if (isLocked)
                             {
-                                reader.Close();
-                                if (UnlockAccount())
+                                DateTime now = DateTime.UtcNow;
+                                if (reader["LockedTime"] != DBNull.Value && (now - (DateTime)reader["LockedTime"]) >= TimeSpan.FromMinutes(30))
                                 {
-                                    return false;
+                                    reader.Close();
+                                    if (UnlockAccount())
+                                    {
+                                        return false;
+                                    }
+                                }
+                                else
+                                {
+                                    reader.Close();
+                                    LockAccount();
+                                    MessageBox.Show("Your account is locked! Please try again after 30 minutes.");
+                                    return true;
                                 }
                             }
-                            else
+                            else if (passwordAttempts >= 5)
                             {
                                 reader.Close();
                                 LockAccount();
@@ -86,48 +93,22 @@ namespace Legal_Case
                                 return true;
                             }
                         }
-                        else if (passwordAttempts >= 5)
-                        {
-                            reader.Close();
-                            LockAccount();
-                            MessageBox.Show("Your account is locked! Please try again after 30 minutes.");
-                            return true;
-                        }
                     }
                 }
-
                 return false;
-            }
-            catch (SqlException ex)
-            {
-                Console.WriteLine("SQL Error: " + ex.Message);
-                return false;
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Error: " + ex.Message);
-                return false;
-            }
-            finally
-            {
-                if (connection != null && connection.State == ConnectionState.Open)
-                {
-                    connection.Close();
-                }
             }
         }
 
+
         private void LockAccount()
         {
-            try
+            using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                if (connection != null && connection.State == ConnectionState.Closed)
-                {
-                    connection.Open();
-                }
+                connection.Open();
                 DateTime now = DateTime.UtcNow;
                 DateTime lockedTime = now.AddMinutes(30);
                 string updateQuery = "UPDATE [User] SET [IsLocked] = 1, [LockedTime] = @lockedTime WHERE [UserId] = @userID";
+
                 using (SqlCommand cmd = new SqlCommand(updateQuery, connection))
                 {
                     cmd.Parameters.AddWithValue("@userID", userID);
@@ -135,64 +116,30 @@ namespace Legal_Case
                     cmd.ExecuteNonQuery();
                 }
             }
-            catch (SqlException ex)
-            {
-                Console.WriteLine("SQL Error: " + ex.Message);
-            }
-            finally
-            {
-                if (connection != null && connection.State == ConnectionState.Open)
-                {
-                    connection.Close();
-                }
-            }
         }
+
 
         private bool UnlockAccount()
         {
-            try
+            using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                if (connection != null && connection.State == ConnectionState.Closed)
-                {
-                    connection.Open();
-                }
+                connection.Open();
                 string updateQuery = "UPDATE [User] SET [IsLocked] = 0, [LockedTime] = NULL WHERE [UserId] = @userID";
                 using (SqlCommand cmd = new SqlCommand(updateQuery, connection))
                 {
                     cmd.Parameters.AddWithValue("@userID", userID);
                     int rowsAffected = cmd.ExecuteNonQuery();
-                    if(rowsAffected>0)
-                    {
-                        return true;
-                    }
-                    else
-                    {
-                        return false;
-                    }
-                }
-            }
-            catch (SqlException ex)
-            {
-                Console.WriteLine("SQL Error: " + ex.Message);
-                return false;
-            }
-            finally
-            {
-                if (connection != null && connection.State == ConnectionState.Open)
-                {
-                    connection.Close();
+                    return rowsAffected > 0;
                 }
             }
         }
 
+
         private bool ValidateUser(string email, string password)
         {
-            try
+            using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                if (connection != null && connection.State == ConnectionState.Closed)
-                {
-                    connection.Open();
-                }
+                connection.Open();
                 string query = "SELECT COUNT(*) FROM [User] WHERE [Email] = @Email AND [Password] = @Password";
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
@@ -202,80 +149,38 @@ namespace Legal_Case
                     return result > 0;
                 }
             }
-            catch (SqlException ex)
-            {
-                Console.WriteLine("SQL Error: " + ex.Message);
-                return false;
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Error: " + ex.Message);
-                return false;
-            }
-            finally
-            {
-                if (connection != null && connection.State == ConnectionState.Open)
-                {
-                    connection.Close();
-                }
-            }
         }
+
 
         private void IncrementLoginAttempts()
         {
-            try
+            using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                if (connection != null && connection.State == ConnectionState.Closed)
-                {
-                    connection.Open();
-                }
+                connection.Open();
                 string updateQuery = "UPDATE [User] SET [PasswordAttempts] = [PasswordAttempts] + 1 WHERE [userID] = @userID";
                 using (SqlCommand cmd = new SqlCommand(updateQuery, connection))
                 {
-                    cmd.Parameters.AddWithValue("userID", userID);
+                    cmd.Parameters.AddWithValue("@userID", userID);
                     cmd.ExecuteNonQuery();
-                }
-            }
-            catch (SqlException ex)
-            {
-                Console.WriteLine("SQL Error: " + ex.Message);
-            }
-            finally
-            {
-                if (connection != null && connection.State == ConnectionState.Open)
-                {
-                    connection.Close();
                 }
             }
         }
 
+
         private void ResetLoginAttempts()
         {
-            try
+            using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                if (connection != null && connection.State == ConnectionState.Closed)
-                {
-                    connection.Open();
-                }
+                connection.Open();
                 string resetQuery = "UPDATE [User] SET [PasswordAttempts] = 0 WHERE [userID] = @userID";
                 using (SqlCommand cmd = new SqlCommand(resetQuery, connection))
                 {
-                    cmd.Parameters.AddWithValue("userID", userID);
+                    cmd.Parameters.AddWithValue("@userID", userID);
                     cmd.ExecuteNonQuery();
                 }
             }
-            catch (SqlException ex)
-            {
-                Console.WriteLine("SQL Error: " + ex.Message);
-            }
-            finally
-            {
-                if (connection != null && connection.State == ConnectionState.Open)
-                {
-                    connection.Close();
-                }
-            }
         }
+
 
         private void closeBtn_Click(object sender, EventArgs e)
         {
@@ -283,7 +188,7 @@ namespace Legal_Case
             {
                 connection.Close();
             }
-            this.Close();
+           Application.Exit();
         }
 
     }
