@@ -13,6 +13,7 @@ namespace Legal_Case
         {
             connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"E:\\Legal-Case-Management-System\\Legal Case\\Legal Case\\Database1.mdf\";Integrated Security=True";
             //connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"C:\\Users\\Gold\\LCMS\\Legal-Case-Management-System\\Legal Case\\Legal Case\\Database1.mdf\";Integrated Security=True";
+
             InitializeComponent();
             connection = new SqlConnection(connectionString);
 
@@ -172,7 +173,7 @@ namespace Legal_Case
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();
-                string resetQuery = "UPDATE [User] SET [PasswordAttempts] = 0 WHERE [userID] = @userID";
+                string resetQuery = "UPDATE [User] SET [PasswordAttempts] = 0";
                 using (SqlCommand cmd = new SqlCommand(resetQuery, connection))
                 {
                     cmd.Parameters.AddWithValue("@userID", userID);
@@ -188,8 +189,10 @@ namespace Legal_Case
             {
                 connection.Close();
             }
-           Application.Exit();
+            Application.Exit();
+
         }
 
+     
     }
 }

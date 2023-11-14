@@ -54,28 +54,32 @@ namespace Legal_Case
                         int selectedCaseID = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells["CaseID"].Value);
                         if (HasPermission("DeleteCase"))
                         {
-                            using (SqlConnection conn = new SqlConnection(connectionString))
+                            if (connection != null && connection.State == ConnectionState.Closed)
                             {
-                                conn.Open();
-                                using (SqlTransaction transaction = conn.BeginTransaction())
+                                connection.Open();
+                            }
+                            using (SqlTransaction transaction = connection.BeginTransaction())
+                            {
+                                try
                                 {
-                                    try
+                                    string query = @"Delete from [Case] WHERE CaseID = @ID";
+                                    using (SqlCommand command = new SqlCommand(query, connection, transaction))
                                     {
-                                        string query = @"Delete from [Case] WHERE CaseID = @ID";
-                                        using (SqlCommand command = new SqlCommand(query, conn, transaction))
-                                        {
-                                            command.Parameters.AddWithValue("@ID", selectedCaseID);
-                                            command.ExecuteNonQuery();
-                                            MessageBox.Show("Case successfully deleted", "", MessageBoxButtons.OK);
-                                            transaction.Commit();
-                                        }
-                                    }
-                                    catch (Exception ex)
-                                    {
-                                        Console.WriteLine("An error occurred: " + ex.Message);
-                                        transaction.Rollback();
+                                        command.Parameters.AddWithValue("@ID", selectedCaseID);
+                                        command.ExecuteNonQuery();
+                                        MessageBox.Show("Case successfully deleted", "", MessageBoxButtons.OK);
+                                        transaction.Commit();
                                     }
                                 }
+                                catch (Exception ex)
+                                {
+                                    Console.WriteLine("An error occurred: " + ex.Message);
+                                    transaction.Rollback();
+                                }
+                            }
+                            if (connection != null && connection.State == ConnectionState.Open)
+                            {
+                                connection.Close();
                             }
                         }
                         else
@@ -105,7 +109,6 @@ namespace Legal_Case
                     adapter.Fill(dataTable);
                 }
             }
-
             return dataTable;
         }
 
@@ -219,6 +222,10 @@ namespace Legal_Case
 
         private void Logout_Click(object sender, EventArgs e)
         {
+            if (connection != null && connection.State == ConnectionState.Open)
+            {
+                connection.Close();
+            }
             Application.Exit();
         }
     }

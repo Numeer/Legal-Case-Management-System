@@ -31,13 +31,13 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form4));
             CloseBtn = new Button();
             panel2 = new Panel();
-            label2 = new Label();
-            CaseAttroney = new ComboBox();
-            CaseDescription = new TextBox();
-            label3 = new Label();
-            CreateBtn = new Button();
-            CaseTitle = new TextBox();
             label1 = new Label();
+            CaseTitle = new TextBox();
+            CreateBtn = new Button();
+            label3 = new Label();
+            CaseDescription = new TextBox();
+            CaseAttroney = new ComboBox();
+            label2 = new Label();
             panel2.SuspendLayout();
             SuspendLayout();
             // 
@@ -68,50 +68,27 @@
             panel2.Size = new Size(273, 283);
             panel2.TabIndex = 9;
             // 
-            // label2
+            // label1
             // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            label2.ForeColor = Color.FromArgb(224, 224, 224);
-            label2.Location = new Point(17, 107);
-            label2.Name = "label2";
-            label2.Size = new Size(115, 15);
-            label2.TabIndex = 3;
-            label2.Text = "CASE DESCRIPTION";
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            label1.ForeColor = Color.FromArgb(224, 224, 224);
+            label1.Location = new Point(17, 19);
+            label1.Name = "label1";
+            label1.Size = new Size(68, 15);
+            label1.TabIndex = 2;
+            label1.Text = "CASE TITLE";
             // 
-            // CaseAttroney
+            // CaseTitle
             // 
-            CaseAttroney.BackColor = Color.FromArgb(224, 224, 224);
-            CaseAttroney.ForeColor = Color.FromArgb(64, 64, 64);
-            CaseAttroney.FormattingEnabled = true;
-            CaseAttroney.Location = new Point(31, 81);
-            CaseAttroney.MaxDropDownItems = 10;
-            CaseAttroney.Name = "CaseAttroney";
-            CaseAttroney.Size = new Size(196, 23);
-            CaseAttroney.TabIndex = 5;
-            // 
-            // CaseDescription
-            // 
-            CaseDescription.BackColor = Color.FromArgb(224, 224, 224);
-            CaseDescription.BorderStyle = BorderStyle.FixedSingle;
-            CaseDescription.ForeColor = Color.FromArgb(64, 64, 64);
-            CaseDescription.Location = new Point(31, 125);
-            CaseDescription.Multiline = true;
-            CaseDescription.Name = "CaseDescription";
-            CaseDescription.Size = new Size(222, 110);
-            CaseDescription.TabIndex = 4;
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            label3.ForeColor = Color.FromArgb(224, 224, 224);
-            label3.Location = new Point(17, 63);
-            label3.Name = "label3";
-            label3.Size = new Size(98, 15);
-            label3.TabIndex = 6;
-            label3.Text = "CASE ATTORNEY";
-            label3.TextAlign = ContentAlignment.MiddleCenter;
+            CaseTitle.AcceptsTab = true;
+            CaseTitle.BackColor = Color.FromArgb(224, 224, 224);
+            CaseTitle.BorderStyle = BorderStyle.FixedSingle;
+            CaseTitle.ForeColor = Color.FromArgb(64, 64, 64);
+            CaseTitle.Location = new Point(31, 37);
+            CaseTitle.Name = "CaseTitle";
+            CaseTitle.Size = new Size(161, 23);
+            CaseTitle.TabIndex = 1;
             // 
             // CreateBtn
             // 
@@ -128,27 +105,53 @@
             CreateBtn.UseVisualStyleBackColor = false;
             CreateBtn.Click += CreateBtn_Click;
             // 
-            // CaseTitle
+            // label3
             // 
-            CaseTitle.AcceptsTab = true;
-            CaseTitle.BackColor = Color.FromArgb(224, 224, 224);
-            CaseTitle.BorderStyle = BorderStyle.FixedSingle;
-            CaseTitle.ForeColor = Color.FromArgb(64, 64, 64);
-            CaseTitle.Location = new Point(31, 37);
-            CaseTitle.Name = "CaseTitle";
-            CaseTitle.Size = new Size(161, 23);
-            CaseTitle.TabIndex = 1;
+            label3.AutoSize = true;
+            label3.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            label3.ForeColor = Color.FromArgb(224, 224, 224);
+            label3.Location = new Point(17, 63);
+            label3.Name = "label3";
+            label3.Size = new Size(98, 15);
+            label3.TabIndex = 6;
+            label3.Text = "CASE ATTORNEY";
+            label3.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // label1
+            // CaseDescription
             // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.ForeColor = Color.FromArgb(224, 224, 224);
-            label1.Location = new Point(17, 19);
-            label1.Name = "label1";
-            label1.Size = new Size(68, 15);
-            label1.TabIndex = 2;
-            label1.Text = "CASE TITLE";
+            CaseDescription.BackColor = Color.FromArgb(224, 224, 224);
+            CaseDescription.BorderStyle = BorderStyle.FixedSingle;
+            CaseDescription.ForeColor = Color.FromArgb(64, 64, 64);
+            CaseDescription.Location = new Point(31, 125);
+            CaseDescription.Multiline = true;
+            CaseDescription.Name = "CaseDescription";
+            CaseDescription.Size = new Size(222, 110);
+            CaseDescription.TabIndex = 4;
+            // 
+            // CaseAttroney
+            // 
+            CaseAttroney.BackColor = Color.FromArgb(224, 224, 224);
+            CaseAttroney.DropDownHeight = 1000;
+            CaseAttroney.ForeColor = Color.FromArgb(64, 64, 64);
+            CaseAttroney.FormattingEnabled = true;
+            CaseAttroney.IntegralHeight = false;
+            CaseAttroney.ItemHeight = 15;
+            CaseAttroney.Location = new Point(31, 81);
+            CaseAttroney.MaxDropDownItems = 20;
+            CaseAttroney.Name = "CaseAttroney";
+            CaseAttroney.Size = new Size(196, 23);
+            CaseAttroney.TabIndex = 5;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            label2.ForeColor = Color.FromArgb(224, 224, 224);
+            label2.Location = new Point(17, 107);
+            label2.Name = "label2";
+            label2.Size = new Size(115, 15);
+            label2.TabIndex = 3;
+            label2.Text = "CASE DESCRIPTION";
             // 
             // Form4
             // 

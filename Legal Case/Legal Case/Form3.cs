@@ -41,7 +41,10 @@ namespace Legal_Case
         }
         private void UpdateCaseDetails(int caseID, string newStatus, string newProgress, string newDescription, string newDocument, string newUpload)
         {
-            connection.Open();
+            if (connection != null && connection.State == ConnectionState.Closed)
+            {
+                connection.Open();
+            }
             using (SqlTransaction transaction = connection.BeginTransaction())
             {
                 try
@@ -137,6 +140,15 @@ namespace Legal_Case
             MessageBox.Show("Case details updated successfully.", "Update Complete", MessageBoxButtons.OK, MessageBoxIcon.Information);
             Form2 form2 = new Form2(email, connectionString);
             form2.Show();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (connection != null && connection.State == ConnectionState.Open)
+            {
+                connection.Close();
+            }
+            Application.Exit();
         }
     }
 }
