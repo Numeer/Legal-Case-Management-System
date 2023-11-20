@@ -38,7 +38,10 @@
             CaseDescription = new TextBox();
             CaseAttroney = new ComboBox();
             label2 = new Label();
+            pictureBox1 = new PictureBox();
+            textBox1 = new TextBox();
             panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // CloseBtn
@@ -55,7 +58,7 @@
             // 
             // panel2
             // 
-            panel2.BackColor = Color.SlateGray;
+            panel2.BackColor = Color.Transparent;
             panel2.Controls.Add(label1);
             panel2.Controls.Add(CaseTitle);
             panel2.Controls.Add(CreateBtn);
@@ -63,7 +66,8 @@
             panel2.Controls.Add(CaseDescription);
             panel2.Controls.Add(CaseAttroney);
             panel2.Controls.Add(label2);
-            panel2.Location = new Point(251, 84);
+            panel2.ForeColor = Color.FromArgb(0, 64, 64);
+            panel2.Location = new Point(457, 100);
             panel2.Name = "panel2";
             panel2.Size = new Size(273, 283);
             panel2.TabIndex = 9;
@@ -72,7 +76,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.ForeColor = Color.FromArgb(224, 224, 224);
+            label1.ForeColor = Color.DarkSlateGray;
             label1.Location = new Point(17, 19);
             label1.Name = "label1";
             label1.Size = new Size(68, 15);
@@ -82,9 +86,9 @@
             // CaseTitle
             // 
             CaseTitle.AcceptsTab = true;
-            CaseTitle.BackColor = Color.FromArgb(224, 224, 224);
+            CaseTitle.BackColor = Color.Azure;
             CaseTitle.BorderStyle = BorderStyle.FixedSingle;
-            CaseTitle.ForeColor = Color.FromArgb(64, 64, 64);
+            CaseTitle.ForeColor = Color.FromArgb(0, 64, 64);
             CaseTitle.Location = new Point(31, 37);
             CaseTitle.Name = "CaseTitle";
             CaseTitle.Size = new Size(161, 23);
@@ -109,7 +113,7 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            label3.ForeColor = Color.FromArgb(224, 224, 224);
+            label3.ForeColor = Color.DarkSlateGray;
             label3.Location = new Point(17, 63);
             label3.Name = "label3";
             label3.Size = new Size(98, 15);
@@ -119,7 +123,7 @@
             // 
             // CaseDescription
             // 
-            CaseDescription.BackColor = Color.FromArgb(224, 224, 224);
+            CaseDescription.BackColor = Color.Azure;
             CaseDescription.BorderStyle = BorderStyle.FixedSingle;
             CaseDescription.ForeColor = Color.FromArgb(64, 64, 64);
             CaseDescription.Location = new Point(31, 125);
@@ -130,9 +134,9 @@
             // 
             // CaseAttroney
             // 
-            CaseAttroney.BackColor = Color.FromArgb(224, 224, 224);
+            CaseAttroney.BackColor = Color.Azure;
             CaseAttroney.DropDownHeight = 1000;
-            CaseAttroney.ForeColor = Color.FromArgb(64, 64, 64);
+            CaseAttroney.ForeColor = Color.FromArgb(0, 64, 64);
             CaseAttroney.FormattingEnabled = true;
             CaseAttroney.IntegralHeight = false;
             CaseAttroney.ItemHeight = 15;
@@ -146,21 +150,46 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            label2.ForeColor = Color.FromArgb(224, 224, 224);
+            label2.ForeColor = Color.DarkSlateGray;
             label2.Location = new Point(17, 107);
             label2.Name = "label2";
             label2.Size = new Size(115, 15);
             label2.TabIndex = 3;
             label2.Text = "CASE DESCRIPTION";
             // 
+            // pictureBox1
+            // 
+            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
+            pictureBox1.Location = new Point(1, 0);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(409, 451);
+            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox1.TabIndex = 10;
+            pictureBox1.TabStop = false;
+            // 
+            // textBox1
+            // 
+            textBox1.BackColor = Color.DarkSeaGreen;
+            textBox1.BorderStyle = BorderStyle.None;
+            textBox1.Font = new Font("Showcard Gothic", 25F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
+            textBox1.ForeColor = Color.FromArgb(0, 64, 64);
+            textBox1.Location = new Point(291, 27);
+            textBox1.Multiline = true;
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(181, 49);
+            textBox1.TabIndex = 11;
+            textBox1.Text = "Add Case";
+            textBox1.TextAlign = HorizontalAlignment.Center;
+            // 
             // Form4
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.FromArgb(64, 64, 64);
-            BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
+            BackColor = Color.DarkSeaGreen;
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(800, 450);
+            Controls.Add(textBox1);
+            Controls.Add(pictureBox1);
             Controls.Add(panel2);
             Controls.Add(CloseBtn);
             FormBorderStyle = FormBorderStyle.None;
@@ -169,7 +198,9 @@
             Text = "Form4";
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -182,5 +213,7 @@
         private TextBox CaseDescription;
         private ComboBox CaseAttroney;
         private Label label2;
+        private PictureBox pictureBox1;
+        private TextBox textBox1;
     }
 }

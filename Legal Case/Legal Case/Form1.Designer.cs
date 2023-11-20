@@ -101,7 +101,7 @@
             panel1.Controls.Add(loginButton);
             panel1.Controls.Add(nameText);
             panel1.Controls.Add(passwordText);
-            panel1.Location = new Point(35, 54);
+            panel1.Location = new Point(28, 53);
             panel1.Name = "panel1";
             panel1.Size = new Size(279, 252);
             panel1.TabIndex = 11;
@@ -132,7 +132,7 @@
             pictureBox1.BackColor = Color.Linen;
             pictureBox1.BackgroundImageLayout = ImageLayout.Stretch;
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(126, 12);
+            pictureBox1.Location = new Point(119, 15);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(100, 82);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -147,7 +147,7 @@
             panel2.BorderStyle = BorderStyle.FixedSingle;
             panel2.Controls.Add(pictureBox1);
             panel2.Controls.Add(panel1);
-            panel2.Location = new Point(390, 70);
+            panel2.Location = new Point(348, 70);
             panel2.Name = "panel2";
             panel2.Size = new Size(333, 324);
             panel2.TabIndex = 12;
@@ -167,7 +167,7 @@
             // pictureBox4
             // 
             pictureBox4.Image = (Image)resources.GetObject("pictureBox4.Image");
-            pictureBox4.Location = new Point(164, 70);
+            pictureBox4.Location = new Point(122, 70);
             pictureBox4.Name = "pictureBox4";
             pictureBox4.Size = new Size(231, 324);
             pictureBox4.SizeMode = PictureBoxSizeMode.StretchImage;

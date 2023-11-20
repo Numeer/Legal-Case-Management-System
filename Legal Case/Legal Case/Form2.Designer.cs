@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle9 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle10 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle11 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle12 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form2));
             label1 = new Label();
             dataGridView1 = new DataGridView();
@@ -40,8 +40,9 @@
             textBox2 = new TextBox();
             button1 = new Button();
             textBox3 = new TextBox();
-            AddCaseBtn = new Button();
             Logout = new Button();
+            button2 = new Button();
+            AddUserBtn = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
@@ -67,47 +68,47 @@
             dataGridView1.AllowUserToOrderColumns = true;
             dataGridView1.AllowUserToResizeColumns = false;
             dataGridView1.AllowUserToResizeRows = false;
-            dataGridViewCellStyle9.BackColor = Color.WhiteSmoke;
-            dataGridViewCellStyle9.Font = new Font("Microsoft Tai Le", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle9.ForeColor = Color.FromArgb(64, 64, 64);
-            dataGridViewCellStyle9.SelectionBackColor = Color.DarkGray;
-            dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle1.BackColor = Color.WhiteSmoke;
+            dataGridViewCellStyle1.Font = new Font("Microsoft Tai Le", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = Color.FromArgb(64, 64, 64);
+            dataGridViewCellStyle1.SelectionBackColor = Color.DarkGray;
+            dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             dataGridView1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridView1.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             dataGridView1.BackgroundColor = Color.FromArgb(64, 64, 64);
             dataGridView1.BorderStyle = BorderStyle.Fixed3D;
             dataGridView1.CellBorderStyle = DataGridViewCellBorderStyle.Raised;
-            dataGridViewCellStyle10.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle10.BackColor = Color.Gray;
-            dataGridViewCellStyle10.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle10.ForeColor = Color.White;
-            dataGridViewCellStyle10.SelectionBackColor = SystemColors.ActiveBorder;
-            dataGridViewCellStyle10.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle10.WrapMode = DataGridViewTriState.True;
-            dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = Color.Gray;
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.ActiveBorder;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
+            dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             dataGridView1.ColumnHeadersHeight = 27;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dataGridViewCellStyle11.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle11.BackColor = SystemColors.Window;
-            dataGridViewCellStyle11.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle11.ForeColor = Color.FromArgb(64, 64, 64);
-            dataGridViewCellStyle11.SelectionBackColor = SystemColors.ButtonShadow;
-            dataGridViewCellStyle11.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle11.WrapMode = DataGridViewTriState.False;
-            dataGridView1.DefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = SystemColors.Window;
+            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle3.ForeColor = Color.FromArgb(64, 64, 64);
+            dataGridViewCellStyle3.SelectionBackColor = SystemColors.ButtonShadow;
+            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
+            dataGridView1.DefaultCellStyle = dataGridViewCellStyle3;
             dataGridView1.GridColor = SystemColors.ActiveCaptionText;
             dataGridView1.Location = new Point(345, 245);
             dataGridView1.MultiSelect = false;
             dataGridView1.Name = "dataGridView1";
-            dataGridViewCellStyle12.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle12.BackColor = Color.FromArgb(64, 64, 64);
-            dataGridViewCellStyle12.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle12.ForeColor = Color.Transparent;
-            dataGridViewCellStyle12.SelectionBackColor = SystemColors.ButtonShadow;
-            dataGridViewCellStyle12.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle12.WrapMode = DataGridViewTriState.True;
-            dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = Color.FromArgb(64, 64, 64);
+            dataGridViewCellStyle4.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle4.ForeColor = Color.Transparent;
+            dataGridViewCellStyle4.SelectionBackColor = SystemColors.ButtonShadow;
+            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
+            dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             dataGridView1.RowHeadersVisible = false;
             dataGridView1.RowTemplate.Height = 25;
             dataGridView1.SelectionMode = DataGridViewSelectionMode.CellSelect;
@@ -178,30 +179,42 @@
             textBox3.Text = "Welcome to our Legal Case Management System – your comprehensive solution for efficiently managing legal cases, simplifying document workflows, and streamlining communication.";
             textBox3.TextAlign = HorizontalAlignment.Center;
             // 
-            // AddCaseBtn
-            // 
-            AddCaseBtn.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            AddCaseBtn.ForeColor = Color.FromArgb(64, 64, 64);
-            AddCaseBtn.Location = new Point(506, 439);
-            AddCaseBtn.Name = "AddCaseBtn";
-            AddCaseBtn.Size = new Size(125, 37);
-            AddCaseBtn.TabIndex = 7;
-            AddCaseBtn.Text = "Add new Case";
-            AddCaseBtn.UseVisualStyleBackColor = true;
-            AddCaseBtn.Click += AddCaseBtn_Click;
-            // 
             // Logout
             // 
             Logout.BackColor = Color.FromArgb(224, 224, 224);
             Logout.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             Logout.ForeColor = Color.FromArgb(64, 64, 64);
-            Logout.Location = new Point(521, 496);
+            Logout.Location = new Point(531, 498);
             Logout.Name = "Logout";
-            Logout.Size = new Size(91, 28);
+            Logout.Size = new Size(98, 32);
             Logout.TabIndex = 8;
             Logout.Text = "LOGOUT";
             Logout.UseVisualStyleBackColor = false;
             Logout.Click += Logout_Click;
+            // 
+            // button2
+            // 
+            button2.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            button2.ForeColor = Color.FromArgb(64, 64, 64);
+            button2.Location = new Point(413, 443);
+            button2.Name = "button2";
+            button2.Size = new Size(125, 37);
+            button2.TabIndex = 7;
+            button2.Text = "Add new Case";
+            button2.UseVisualStyleBackColor = true;
+            button2.Click += AddCaseBtn_Click;
+            // 
+            // AddUserBtn
+            // 
+            AddUserBtn.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            AddUserBtn.ForeColor = Color.FromArgb(64, 64, 64);
+            AddUserBtn.Location = new Point(616, 443);
+            AddUserBtn.Name = "AddUserBtn";
+            AddUserBtn.Size = new Size(125, 37);
+            AddUserBtn.TabIndex = 9;
+            AddUserBtn.Text = "Add new User";
+            AddUserBtn.UseVisualStyleBackColor = true;
+            AddUserBtn.Click += AddUserBtn_Click;
             // 
             // Form2
             // 
@@ -210,8 +223,9 @@
             BackColor = Color.FromArgb(64, 64, 64);
             BackgroundImageLayout = ImageLayout.Zoom;
             ClientSize = new Size(876, 631);
+            Controls.Add(AddUserBtn);
             Controls.Add(Logout);
-            Controls.Add(AddCaseBtn);
+            Controls.Add(button2);
             Controls.Add(textBox3);
             Controls.Add(button1);
             Controls.Add(textBox2);
@@ -239,7 +253,8 @@
         private TextBox textBox2;
         private Button button1;
         private TextBox textBox3;
-        private Button AddCaseBtn;
         private Button Logout;
+        private Button button2;
+        private Button AddUserBtn;
     }
 }

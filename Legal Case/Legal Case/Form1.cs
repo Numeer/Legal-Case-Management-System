@@ -6,17 +6,14 @@ namespace Legal_Case
     public partial class Form1 : Form
     {
         private string connectionString;
-        private SqlConnection connection;
         private int userID = 0;
 
         public Form1()
         {
-            connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"E:\\Legal-Case-Management-System\\Legal Case\\Legal Case\\Database1.mdf\";Integrated Security=True";
-            //connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"C:\\Users\\Gold\\LCMS\\Legal-Case-Management-System\\Legal Case\\Legal Case\\Database1.mdf\";Integrated Security=True";
+            //connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"E:\\Legal-Case-Management-System\\Legal Case\\Legal Case\\Database1.mdf\";Integrated Security=True";
+            connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"C:\\Users\\Gold\\LCMS\\Legal-Case-Management-System\\Legal Case\\Legal Case\\Database1.mdf\";Integrated Security=True";
 
             InitializeComponent();
-            connection = new SqlConnection(connectionString);
-
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -185,14 +182,10 @@ namespace Legal_Case
 
         private void closeBtn_Click(object sender, EventArgs e)
         {
-            if (connection != null && connection.State == ConnectionState.Open)
-            {
-                connection.Close();
-            }
             Application.Exit();
 
         }
 
-     
+
     }
 }

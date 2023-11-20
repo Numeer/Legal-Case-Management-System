@@ -18,12 +18,10 @@ namespace Legal_Case
     {
         private string email;
         private string connectionString;
-        private SqlConnection connection;
         public Form2(string userEmail, string String)
         {
             email = userEmail;
             connectionString = String;
-            connection = new SqlConnection(connectionString);
             InitializeComponent();
             PopulateCaseData();
         }
@@ -54,32 +52,33 @@ namespace Legal_Case
                         int selectedCaseID = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells["CaseID"].Value);
                         if (HasPermission("DeleteCase"))
                         {
-                            if (connection != null && connection.State == ConnectionState.Closed)
+                            using (SqlConnection connection = new SqlConnection(connectionString))
                             {
+
                                 connection.Open();
-                            }
-                            using (SqlTransaction transaction = connection.BeginTransaction())
-                            {
-                                try
+                                using (SqlTransaction transaction = connection.BeginTransaction())
                                 {
-                                    string query = @"Delete from [Case] WHERE CaseID = @ID";
-                                    using (SqlCommand command = new SqlCommand(query, connection, transaction))
+                                    try
                                     {
-                                        command.Parameters.AddWithValue("@ID", selectedCaseID);
-                                        command.ExecuteNonQuery();
-                                        MessageBox.Show("Case successfully deleted", "", MessageBoxButtons.OK);
-                                        transaction.Commit();
+                                        string query = @"Delete from [Case] WHERE CaseID = @ID";
+                                        using (SqlCommand command = new SqlCommand(query, connection, transaction))
+                                        {
+                                            command.Parameters.AddWithValue("@ID", selectedCaseID);
+                                            command.ExecuteNonQuery();
+                                            MessageBox.Show("Case successfully deleted", "", MessageBoxButtons.OK);
+                                            transaction.Commit();
+                                        }
+                                    }
+                                    catch (Exception ex)
+                                    {
+                                        Console.WriteLine("An error occurred: " + ex.Message);
+                                        transaction.Rollback();
                                     }
                                 }
-                                catch (Exception ex)
+                                if (connection != null && connection.State == ConnectionState.Open)
                                 {
-                                    Console.WriteLine("An error occurred: " + ex.Message);
-                                    transaction.Rollback();
+                                    connection.Close();
                                 }
-                            }
-                            if (connection != null && connection.State == ConnectionState.Open)
-                            {
-                                connection.Close();
                             }
                         }
                         else
@@ -198,10 +197,6 @@ namespace Legal_Case
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (connection != null && connection.State == ConnectionState.Open)
-            {
-                connection.Close();
-            }
             Application.Exit();
         }
 
@@ -222,11 +217,21 @@ namespace Legal_Case
 
         private void Logout_Click(object sender, EventArgs e)
         {
-            if (connection != null && connection.State == ConnectionState.Open)
-            {
-                connection.Close();
-            }
             Application.Exit();
+        }
+
+        private void AddUserBtn_Click(object sender, EventArgs e)
+        {
+            if (HasPermission("AddUser"))
+            {
+                this.Close();
+                Form5 form5 = new Form5(email, connectionString);
+                form5.Show();
+            }
+            else
+            {
+                MessageBox.Show("You do not have permission to create cases.", "Permission Denied", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
     }
 }

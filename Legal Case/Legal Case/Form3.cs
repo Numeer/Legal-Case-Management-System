@@ -16,13 +16,11 @@ namespace Legal_Case
         private int CaseId;
         private string connectionString;
         private string email;
-        private SqlConnection connection;
         public Form3(String Email, DataTable caseDetails, int caseID, string connection)
         {
             CaseId = caseID;
             connectionString = connection;
             email = Email;
-            this.connection = new SqlConnection(connectionString);
             InitializeComponent();
             if (caseDetails.Rows.Count > 0)
             {
@@ -41,92 +39,92 @@ namespace Legal_Case
         }
         private void UpdateCaseDetails(int caseID, string newStatus, string newProgress, string newDescription, string newDocument, string newUpload)
         {
-            if (connection != null && connection.State == ConnectionState.Closed)
+            using (SqlConnection connection = new SqlConnection(connectionString))
             {
+
                 connection.Open();
+                using (SqlTransaction transaction = connection.BeginTransaction())
+                {
+                    try
+                    {
+                        bool caseExistsInCaseTable = false;
+                        bool caseExistsInDocumentTable = false;
+
+                        using (SqlCommand command = new SqlCommand("SELECT CASEID FROM [Case] WHERE CaseID = @caseID", connection, transaction))
+                        {
+                            command.Parameters.AddWithValue("@caseID", caseID);
+                            SqlDataReader reader = command.ExecuteReader();
+
+                            if (reader.Read())
+                            {
+                                caseExistsInCaseTable = true;
+                            }
+
+                            reader.Close();
+                        }
+
+                        using (SqlCommand command = new SqlCommand("SELECT CaseID FROM [Document] WHERE CaseID = @caseID", connection, transaction))
+                        {
+                            command.Parameters.AddWithValue("@caseID", caseID);
+                            SqlDataReader reader = command.ExecuteReader();
+
+                            if (reader.Read())
+                            {
+                                caseExistsInDocumentTable = true;
+                            }
+
+                            reader.Close();
+                        }
+
+                        if (caseExistsInCaseTable)
+                        {
+                            using (SqlCommand command = new SqlCommand("UPDATE [Case] SET Status = @newStatus, Progress = @newProgress, Description = @newDescription WHERE CaseID = @caseID", connection, transaction))
+                            {
+                                command.Parameters.AddWithValue("@newStatus", newStatus);
+                                command.Parameters.AddWithValue("@newProgress", newProgress);
+                                command.Parameters.AddWithValue("@newDescription", newDescription);
+                                command.Parameters.AddWithValue("@caseID", caseID);
+                                command.ExecuteNonQuery();
+                            }
+                        }
+
+                        if (caseExistsInDocumentTable)
+                        {
+                            using (SqlCommand command = new SqlCommand("UPDATE [Document] SET DocumentName = @newDocument, UploadDate = @newUpload WHERE CaseID = @caseID", connection, transaction))
+                            {
+                                command.Parameters.AddWithValue("@newDocument", newDocument);
+                                command.Parameters.AddWithValue("@newUpload", newUpload);
+                                command.Parameters.AddWithValue("@caseID", caseID);
+                                command.ExecuteNonQuery();
+                            }
+                        }
+                        else if (caseExistsInDocumentTable == false)
+                        {
+                            using (SqlCommand command = new SqlCommand("INSERT INTO [Document] (CaseID, DocumentName, UploadDate) VALUES (@caseID, @newDocument, GETDATE())", connection, transaction))
+                            {
+                                command.Parameters.AddWithValue("@caseID", caseID);
+                                command.Parameters.AddWithValue("@newDocument", newDocument);
+                                command.Parameters.AddWithValue("@newUpload", newUpload);
+                                command.ExecuteNonQuery();
+                            }
+                        }
+
+                        transaction.Commit();
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine("An error occurred: " + ex.Message);
+                        transaction.Rollback();
+                    }
+                    finally
+                    {
+                        if (connection != null && connection.State == ConnectionState.Open)
+                        {
+                            connection.Close();
+                        }
+                    }
+                }
             }
-            using (SqlTransaction transaction = connection.BeginTransaction())
-            {
-                try
-                {
-                    bool caseExistsInCaseTable = false;
-                    bool caseExistsInDocumentTable = false;
-
-                    using (SqlCommand command = new SqlCommand("SELECT CASEID FROM [Case] WHERE CaseID = @caseID", connection, transaction))
-                    {
-                        command.Parameters.AddWithValue("@caseID", caseID);
-                        SqlDataReader reader = command.ExecuteReader();
-
-                        if (reader.Read())
-                        {
-                            caseExistsInCaseTable = true;
-                        }
-
-                        reader.Close();
-                    }
-
-                    using (SqlCommand command = new SqlCommand("SELECT CaseID FROM [Document] WHERE CaseID = @caseID", connection, transaction))
-                    {
-                        command.Parameters.AddWithValue("@caseID", caseID);
-                        SqlDataReader reader = command.ExecuteReader();
-
-                        if (reader.Read())
-                        {
-                            caseExistsInDocumentTable = true;
-                        }
-
-                        reader.Close();
-                    }
-
-                    if (caseExistsInCaseTable)
-                    {
-                        using (SqlCommand command = new SqlCommand("UPDATE [Case] SET Status = @newStatus, Progress = @newProgress, Description = @newDescription WHERE CaseID = @caseID", connection, transaction))
-                        {
-                            command.Parameters.AddWithValue("@newStatus", newStatus);
-                            command.Parameters.AddWithValue("@newProgress", newProgress);
-                            command.Parameters.AddWithValue("@newDescription", newDescription);
-                            command.Parameters.AddWithValue("@caseID", caseID);
-                            command.ExecuteNonQuery();
-                        }
-                    }
-
-                    if (caseExistsInDocumentTable)
-                    {
-                        using (SqlCommand command = new SqlCommand("UPDATE [Document] SET DocumentName = @newDocument, UploadDate = @newUpload WHERE CaseID = @caseID", connection, transaction))
-                        {
-                            command.Parameters.AddWithValue("@newDocument", newDocument);
-                            command.Parameters.AddWithValue("@newUpload", newUpload);
-                            command.Parameters.AddWithValue("@caseID", caseID);
-                            command.ExecuteNonQuery();
-                        }
-                    }
-                    else if (caseExistsInDocumentTable == false)
-                    {
-                        using (SqlCommand command = new SqlCommand("INSERT INTO [Document] (CaseID, DocumentName, UploadDate) VALUES (@caseID, @newDocument, GETDATE())", connection, transaction))
-                        {
-                            command.Parameters.AddWithValue("@caseID", caseID);
-                            command.Parameters.AddWithValue("@newDocument", newDocument);
-                            command.Parameters.AddWithValue("@newUpload", newUpload);
-                            command.ExecuteNonQuery();
-                        }
-                    }
-
-                    transaction.Commit();
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine("An error occurred: " + ex.Message);
-                    transaction.Rollback();
-                }
-                finally
-                {
-                    if (connection != null && connection.State == ConnectionState.Open)
-                    {
-                        connection.Close();
-                    }
-                }
-            }
-
         }
         private void Update_Click(object sender, EventArgs e)
         {
@@ -144,10 +142,6 @@ namespace Legal_Case
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (connection != null && connection.State == ConnectionState.Open)
-            {
-                connection.Close();
-            }
             Application.Exit();
         }
     }
