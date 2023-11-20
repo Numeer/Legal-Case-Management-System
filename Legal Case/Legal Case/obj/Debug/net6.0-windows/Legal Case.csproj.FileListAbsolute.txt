@@ -71,3 +71,5 @@ C:\Users\Gold\LCMS\Legal-Case-Management-System\Legal Case\Legal Case\bin\Debug\
 C:\Users\Gold\LCMS\Legal-Case-Management-System\Legal Case\Legal Case\bin\Debug\net6.0-windows\Legal Case.pdb
 C:\Users\Gold\LCMS\Legal-Case-Management-System\Legal Case\Legal Case\obj\Debug\net6.0-windows\Legal Case.genruntimeconfig.cache
 C:\Users\Gold\LCMS\Legal-Case-Management-System\Legal Case\Legal Case\obj\Debug\net6.0-windows\ref\Legal Case.dll
+E:\Legal-Case-Management-System\Legal Case\Legal Case\obj\Debug\net6.0-windows\Legal_Case.Form5.resources
+E:\Legal-Case-Management-System\Legal Case\Legal Case\obj\Debug\net6.0-windows\Legal Case.sourcelink.json

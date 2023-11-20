@@ -16,13 +16,15 @@ namespace Legal_Case
     {
         private string connectionString;
         private string login_email;
-        public Form5(string mail, string conn)
+        private bool admin;
+        public Form5(string mail, string conn, bool admin)
         {
             login_email = mail;
             connectionString = conn;
             InitializeComponent();
             Role.Items.Add("Attorney");
             Role.Items.Add("User");
+            this.admin = admin;
         }
 
         private void AddUser_Click(object sender, EventArgs e)
@@ -58,7 +60,7 @@ namespace Legal_Case
                                     command.Parameters.AddWithValue("@password", password);
                                     command.Parameters.AddWithValue("@login", DBNull.Value);
                                     command.Parameters.AddWithValue("@attempts", DBNull.Value);
-                                    command.Parameters.AddWithValue("@lock", DBNull.Value);
+                                    command.Parameters.AddWithValue("@lock", false);
                                     command.Parameters.AddWithValue("@time", DBNull.Value);
                                     rows = command.ExecuteNonQuery();
                                 }
@@ -95,9 +97,10 @@ namespace Legal_Case
                                                     {
                                                         transaction.Commit();
                                                         MessageBox.Show("User added successfully!");
-                                                        this.Close();
-                                                        Form2 form2 = new Form2(login_email, connectionString);
+                                                        Form2 form2 = new Form2(login_email, connectionString,admin);
                                                         form2.Show();
+                                                        this.Close();
+
                                                     }
                                                 }
                                             }

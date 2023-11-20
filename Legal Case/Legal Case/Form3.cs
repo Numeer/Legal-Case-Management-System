@@ -16,17 +16,22 @@ namespace Legal_Case
         private int CaseId;
         private string connectionString;
         private string email;
-        public Form3(String Email, DataTable caseDetails, int caseID, string connection)
+        private bool admin;
+        public Form3(String Email, DataTable caseDetails, int caseID, string connection, bool admin)
         {
             CaseId = caseID;
             connectionString = connection;
             email = Email;
+            this.admin = admin;
             InitializeComponent();
+            Status.Items.Add("Open");
+            Status.Items.Add("In Progress");
+            Status.Items.Add("Closed");
             if (caseDetails.Rows.Count > 0)
             {
-                caseName.Text = caseDetails.Rows[0]["CaseName"].ToString();
+                caseTitle.Text = caseDetails.Rows[0]["CaseName"].ToString();
                 caseDescription.Text = caseDetails.Rows[0]["Description"].ToString();
-                statusText.Text = caseDetails.Rows[0]["Status"].ToString();
+                Status.Text = caseDetails.Rows[0]["Status"].ToString();
                 progressText.Text = caseDetails.Rows[0]["Progress"].ToString();
                 documentText.Text = caseDetails.Rows[0]["DocumentName"].ToString();
                 uploadText.Text = caseDetails.Rows[0]["UploadDate"].ToString();
@@ -41,7 +46,6 @@ namespace Legal_Case
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-
                 connection.Open();
                 using (SqlTransaction transaction = connection.BeginTransaction())
                 {
@@ -126,17 +130,18 @@ namespace Legal_Case
                 }
             }
         }
+
         private void Update_Click(object sender, EventArgs e)
         {
             int selectedCaseID = CaseId;
-            string newStatus = statusText.Text;
+            string newStatus = Status.SelectedItem.ToString();
             string newProgress = progressText.Text;
             string newDescription = caseDescription.Text;
             string newDocument = documentText.Text;
             string newUpload = uploadText.Text;
             UpdateCaseDetails(selectedCaseID, newStatus, newProgress, newDescription, newDocument, newUpload);
             MessageBox.Show("Case details updated successfully.", "Update Complete", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            Form2 form2 = new Form2(email, connectionString);
+            Form2 form2 = new Form2(email, connectionString, admin);
             form2.Show();
         }
 
@@ -144,5 +149,6 @@ namespace Legal_Case
         {
             Application.Exit();
         }
+
     }
 }

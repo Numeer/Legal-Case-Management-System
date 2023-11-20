@@ -30,7 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form3));
             caseDescription = new TextBox();
-            statusText = new TextBox();
+            caseTitle = new TextBox();
             label2 = new Label();
             label3 = new Label();
             label4 = new Label();
@@ -43,10 +43,10 @@
             pictureBox1 = new PictureBox();
             button1 = new Button();
             panel1 = new Panel();
+            Status = new ComboBox();
+            label1 = new Label();
             pictureBox2 = new PictureBox();
             textBox1 = new TextBox();
-            caseName = new TextBox();
-            label1 = new Label();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
@@ -64,13 +64,13 @@
             caseDescription.Size = new Size(207, 163);
             caseDescription.TabIndex = 2;
             // 
-            // statusText
+            // caseTitle
             // 
-            statusText.Location = new Point(20, 84);
-            statusText.Multiline = true;
-            statusText.Name = "statusText";
-            statusText.Size = new Size(157, 26);
-            statusText.TabIndex = 3;
+            caseTitle.Location = new Point(20, 34);
+            caseTitle.Multiline = true;
+            caseTitle.Name = "caseTitle";
+            caseTitle.Size = new Size(195, 26);
+            caseTitle.TabIndex = 3;
             // 
             // label2
             // 
@@ -192,12 +192,12 @@
             // 
             panel1.BackColor = Color.FromArgb(224, 224, 224);
             panel1.BorderStyle = BorderStyle.FixedSingle;
+            panel1.Controls.Add(Status);
             panel1.Controls.Add(label1);
-            panel1.Controls.Add(caseName);
             panel1.Controls.Add(caseDescription);
             panel1.Controls.Add(label2);
             panel1.Controls.Add(label3);
-            panel1.Controls.Add(statusText);
+            panel1.Controls.Add(caseTitle);
             panel1.Controls.Add(label5);
             panel1.Controls.Add(documentText);
             panel1.Controls.Add(luploadDate);
@@ -209,6 +209,27 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(253, 525);
             panel1.TabIndex = 17;
+            // 
+            // Status
+            // 
+            Status.ForeColor = SystemColors.WindowFrame;
+            Status.FormattingEnabled = true;
+            Status.Location = new Point(20, 87);
+            Status.Name = "Status";
+            Status.Size = new Size(160, 23);
+            Status.TabIndex = 20;
+            Status.Text = "  Status";
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Sitka Heading", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            label1.ForeColor = Color.FromArgb(0, 64, 64);
+            label1.Location = new Point(20, 8);
+            label1.Name = "label1";
+            label1.Size = new Size(80, 23);
+            label1.TabIndex = 15;
+            label1.Text = "Case Title";
             // 
             // pictureBox2
             // 
@@ -234,24 +255,6 @@
             textBox1.TabIndex = 19;
             textBox1.Text = "                               Update     Case";
             textBox1.TextAlign = HorizontalAlignment.Center;
-            // 
-            // caseName
-            // 
-            caseName.Location = new Point(20, 32);
-            caseName.Name = "caseName";
-            caseName.Size = new Size(160, 23);
-            caseName.TabIndex = 14;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Sitka Heading", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.ForeColor = Color.FromArgb(0, 64, 64);
-            label1.Location = new Point(20, 8);
-            label1.Name = "label1";
-            label1.Size = new Size(80, 23);
-            label1.TabIndex = 15;
-            label1.Text = "Case Title";
             // 
             // Form3
             // 
@@ -281,7 +284,6 @@
 
         #endregion
         private TextBox caseDescription;
-        private TextBox statusText;
         private Label label2;
         private Label label3;
         private Label label4;
@@ -297,7 +299,8 @@
         private Panel panel1;
         private PictureBox pictureBox2;
         private TextBox textBox1;
-        private TextBox caseName;
         private Label label1;
+        private ComboBox Status;
+        protected TextBox caseTitle;
     }
 }

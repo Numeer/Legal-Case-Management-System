@@ -18,11 +18,13 @@ namespace Legal_Case
     {
         private string Email;
         private string connectionString;
-        public Form4(string email, string connection)
+        private bool admin;
+        public Form4(string email, string connection, bool admin)
         {
             InitializeComponent();
             Email = email;
             connectionString = connection;
+            this.admin = admin;
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 conn.Open();
@@ -40,6 +42,8 @@ namespace Legal_Case
                     }
                 }
             }
+
+            this.admin = admin;
         }
 
         private void Create_Case()
@@ -101,7 +105,7 @@ namespace Legal_Case
                             MessageBox.Show("Case successfully created", "", MessageBoxButtons.OK);
                         }
                         this.Close();
-                        Form2 form2 = new Form2(Email, connectionString);
+                        Form2 form2 = new Form2(Email, connectionString,admin);
                         form2.Show();
                     }
                 }

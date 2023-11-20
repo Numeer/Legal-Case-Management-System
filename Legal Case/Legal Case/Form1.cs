@@ -7,12 +7,12 @@ namespace Legal_Case
     {
         private string connectionString;
         private int userID = 0;
+        private bool admin = false;
 
         public Form1()
         {
-            //connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"E:\\Legal-Case-Management-System\\Legal Case\\Legal Case\\Database1.mdf\";Integrated Security=True";
-            connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"C:\\Users\\Gold\\LCMS\\Legal-Case-Management-System\\Legal Case\\Legal Case\\Database1.mdf\";Integrated Security=True";
-
+            connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"E:\\Legal-Case-Management-System\\Legal Case\\Legal Case\\Database1.mdf\";Integrated Security=True";
+            //connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"C:\\Users\\Gold\\LCMS\\Legal-Case-Management-System\\Legal Case\\Legal Case\\Database1.mdf\";Integrated Security=True";
             InitializeComponent();
         }
 
@@ -35,7 +35,9 @@ namespace Legal_Case
                 {
                     MessageBox.Show("Login successful!");
                     ResetLoginAttempts();
-                    Form2 form2 = new Form2(email, connectionString);
+                    CheckIfAdmin();
+                    SetLastLogin();
+                    Form2 form2 = new Form2(email, connectionString,admin);
                     form2.Show();
                     this.Hide();
                 }
@@ -180,6 +182,48 @@ namespace Legal_Case
         }
 
 
+        private void CheckIfAdmin()
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                string adminQuery = "Select [r].[RoleName] from [Role] AS r INNER JOIN [UserRole] as UR ON r.RoleID = UR.RoleID where UR.UserId = @userID";
+                using (SqlCommand cmd = new SqlCommand(adminQuery, connection))
+                {
+                    cmd.Parameters.AddWithValue("@userID", userID);
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            string name = (string)reader["RoleName"];
+                            if (name == "Admin")
+                            {
+                                admin = true;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        
+        
+        private void SetLastLogin()
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                string resetQuery = "UPDATE [User] SET [LastLoggedIn] = @last where [UserId] = @userId";
+                DateTime time = DateTime.Now;
+                using (SqlCommand cmd = new SqlCommand(resetQuery, connection))
+                {
+                    cmd.Parameters.AddWithValue("@last", time);
+                    cmd.Parameters.AddWithValue("@userId", userID);
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+        
+        
         private void closeBtn_Click(object sender, EventArgs e)
         {
             Application.Exit();

@@ -18,10 +18,26 @@ namespace Legal_Case
     {
         private string email;
         private string connectionString;
-        public Form2(string userEmail, string String)
+        private string query;
+        private bool admin;
+        public Form2(string userEmail, string String, bool admin)
         {
             email = userEmail;
             connectionString = String;
+            this.admin = admin;
+            if(admin)
+            {
+                query = @"SELECT C.CaseID, C.CaseName, C.Status, C.Progress
+                     FROM [Case] AS C";
+            }
+            else
+            {
+                query = @"SELECT C.CaseID, C.CaseName, C.Status, C.Progress
+                     FROM [Case] AS C
+                     INNER JOIN [User] AS U ON C.AssignedAttorneyID = U.UserID
+                     WHERE U.Email = @Email";
+
+            }
             InitializeComponent();
             PopulateCaseData();
         }
@@ -35,10 +51,10 @@ namespace Legal_Case
                     if (dataGridView1.Columns[e.ColumnIndex].HeaderText == "Update")
                     {
                         int selectedCaseID = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells["CaseID"].Value);
-                        if (HasPermission("UpdateCase"))
+                        if (admin || HasPermission("UpdateCase"))
                         {
                             DataTable caseDetails = RetrieveCaseDetails(selectedCaseID);
-                            Form3 form3 = new Form3(email, caseDetails, selectedCaseID, connectionString);
+                            Form3 form3 = new Form3(email, caseDetails, selectedCaseID, connectionString,admin);
                             form3.Show();
                             this.Close();
                         }
@@ -50,11 +66,10 @@ namespace Legal_Case
                     else if (dataGridView1.Columns[e.ColumnIndex].HeaderText == "Delete")
                     {
                         int selectedCaseID = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells["CaseID"].Value);
-                        if (HasPermission("DeleteCase"))
+                        if (admin || HasPermission("DeleteCase"))
                         {
                             using (SqlConnection connection = new SqlConnection(connectionString))
                             {
-
                                 connection.Open();
                                 using (SqlTransaction transaction = connection.BeginTransaction())
                                 {
@@ -65,8 +80,9 @@ namespace Legal_Case
                                         {
                                             command.Parameters.AddWithValue("@ID", selectedCaseID);
                                             command.ExecuteNonQuery();
-                                            MessageBox.Show("Case successfully deleted", "", MessageBoxButtons.OK);
                                             transaction.Commit();
+                                            MessageBox.Show("Case successfully deleted", "", MessageBoxButtons.OK);
+                                            PopulateCaseData();
                                         }
                                     }
                                     catch (Exception ex)
@@ -114,11 +130,7 @@ namespace Legal_Case
         private DataTable RetrieveCaseData()
         {
             DataTable dataTable = new DataTable();
-            string query = @"SELECT C.CaseID, C.CaseName, C.Status, C.Progress
-                     FROM [Case] AS C
-                     INNER JOIN [User] AS U ON C.AssignedAttorneyID = U.UserID
-                     WHERE U.Email = @Email";
-
+            
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();
@@ -136,28 +148,35 @@ namespace Legal_Case
 
         private void PopulateCaseData()
         {
-            DataTable caseData = RetrieveCaseData();
+            if (dataGridView1.Columns.Count > 0)
+            {
+                DataTable refreshedData = RetrieveCaseData();
+                dataGridView1.DataSource = refreshedData;
+            }
+            else
+            {
+                DataTable caseData = RetrieveCaseData();
+                dataGridView1.DataSource = caseData;
 
-            dataGridView1.DataSource = caseData;
+                DataGridViewButtonColumn updateButtonColumn = new DataGridViewButtonColumn();
+                updateButtonColumn.HeaderText = "Update";
+                updateButtonColumn.Text = "Do";
+                updateButtonColumn.UseColumnTextForButtonValue = true;
+                updateButtonColumn.FlatStyle = FlatStyle.Popup;
+                updateButtonColumn.DefaultCellStyle.BackColor = Color.DarkGray;
+                updateButtonColumn.DefaultCellStyle.ForeColor = Color.White;
 
-            DataGridViewButtonColumn updateButtonColumn = new DataGridViewButtonColumn();
-            updateButtonColumn.HeaderText = "Update";
-            updateButtonColumn.Text = "Do";
-            updateButtonColumn.UseColumnTextForButtonValue = true;
-            updateButtonColumn.FlatStyle = FlatStyle.Popup;
-            updateButtonColumn.DefaultCellStyle.BackColor = Color.DarkGray;
-            updateButtonColumn.DefaultCellStyle.ForeColor = Color.White;
+                DataGridViewButtonColumn deleteButtonColumn = new DataGridViewButtonColumn();
+                deleteButtonColumn.HeaderText = "Delete";
+                deleteButtonColumn.Text = "Do";
+                deleteButtonColumn.UseColumnTextForButtonValue = true;
+                deleteButtonColumn.FlatStyle = FlatStyle.Popup;
+                deleteButtonColumn.DefaultCellStyle.BackColor = Color.DarkGray;
+                deleteButtonColumn.DefaultCellStyle.ForeColor = Color.White;
 
-            DataGridViewButtonColumn deleteButtonColumn = new DataGridViewButtonColumn();
-            deleteButtonColumn.HeaderText = "Delete";
-            deleteButtonColumn.Text = "Do";
-            deleteButtonColumn.UseColumnTextForButtonValue = true;
-            deleteButtonColumn.FlatStyle = FlatStyle.Popup;
-            deleteButtonColumn.DefaultCellStyle.BackColor = Color.DarkGray;
-            deleteButtonColumn.DefaultCellStyle.ForeColor = Color.White;
-
-            dataGridView1.Columns.Add(updateButtonColumn);
-            dataGridView1.Columns.Add(deleteButtonColumn);
+                dataGridView1.Columns.Add(updateButtonColumn);
+                dataGridView1.Columns.Add(deleteButtonColumn);
+            }
         }
 
         private bool HasPermission(string permissionName)
@@ -205,7 +224,7 @@ namespace Legal_Case
             if (HasPermission("CreateCase"))
             {
                 this.Close();
-                Form4 form4 = new Form4(email, connectionString);
+                Form4 form4 = new Form4(email, connectionString,admin);
                 form4.Show();
             }
             else
@@ -222,10 +241,10 @@ namespace Legal_Case
 
         private void AddUserBtn_Click(object sender, EventArgs e)
         {
-            if (HasPermission("AddUser"))
+            if (admin || HasPermission("AddUser"))
             {
                 this.Close();
-                Form5 form5 = new Form5(email, connectionString);
+                Form5 form5 = new Form5(email, connectionString, admin);
                 form5.Show();
             }
             else
