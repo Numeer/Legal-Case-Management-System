@@ -39,7 +39,6 @@
             textBox1 = new TextBox();
             textBox2 = new TextBox();
             button1 = new Button();
-            textBox3 = new TextBox();
             Logout = new Button();
             button2 = new Button();
             AddUserBtn = new Button();
@@ -98,7 +97,7 @@
             dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
             dataGridView1.DefaultCellStyle = dataGridViewCellStyle3;
             dataGridView1.GridColor = SystemColors.ActiveCaptionText;
-            dataGridView1.Location = new Point(345, 245);
+            dataGridView1.Location = new Point(344, 217);
             dataGridView1.MultiSelect = false;
             dataGridView1.Name = "dataGridView1";
             dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
@@ -134,11 +133,11 @@
             // 
             textBox1.BackColor = Color.FromArgb(64, 64, 64);
             textBox1.BorderStyle = BorderStyle.None;
-            textBox1.Font = new Font("Segoe UI", 10F, FontStyle.Italic, GraphicsUnit.Point);
+            textBox1.Font = new Font("Segoe UI", 15F, FontStyle.Italic, GraphicsUnit.Point);
             textBox1.ForeColor = Color.WhiteSmoke;
             textBox1.Location = new Point(356, 109);
             textBox1.Name = "textBox1";
-            textBox1.Size = new Size(410, 18);
+            textBox1.Size = new Size(410, 27);
             textBox1.TabIndex = 3;
             textBox1.Text = "CaseSync: Where Legal Matters Unfold";
             textBox1.TextAlign = HorizontalAlignment.Center;
@@ -147,10 +146,11 @@
             // 
             textBox2.BackColor = Color.FromArgb(64, 64, 64);
             textBox2.BorderStyle = BorderStyle.None;
+            textBox2.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             textBox2.ForeColor = Color.WhiteSmoke;
-            textBox2.Location = new Point(427, 133);
+            textBox2.Location = new Point(399, 162);
             textBox2.Name = "textBox2";
-            textBox2.Size = new Size(314, 16);
+            textBox2.Size = new Size(363, 22);
             textBox2.TabIndex = 4;
             textBox2.Text = "A way to hope and light; representing demo cases.";
             // 
@@ -166,25 +166,12 @@
             button1.UseVisualStyleBackColor = false;
             button1.Click += button1_Click;
             // 
-            // textBox3
-            // 
-            textBox3.BackColor = Color.FromArgb(64, 64, 64);
-            textBox3.BorderStyle = BorderStyle.None;
-            textBox3.ForeColor = SystemColors.Info;
-            textBox3.Location = new Point(367, 165);
-            textBox3.Multiline = true;
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(399, 74);
-            textBox3.TabIndex = 6;
-            textBox3.Text = "Welcome to our Legal Case Management System – your comprehensive solution for efficiently managing legal cases, simplifying document workflows, and streamlining communication.";
-            textBox3.TextAlign = HorizontalAlignment.Center;
-            // 
             // Logout
             // 
             Logout.BackColor = Color.FromArgb(224, 224, 224);
             Logout.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             Logout.ForeColor = Color.FromArgb(64, 64, 64);
-            Logout.Location = new Point(531, 498);
+            Logout.Location = new Point(523, 491);
             Logout.Name = "Logout";
             Logout.Size = new Size(98, 32);
             Logout.TabIndex = 8;
@@ -196,7 +183,7 @@
             // 
             button2.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             button2.ForeColor = Color.FromArgb(64, 64, 64);
-            button2.Location = new Point(413, 443);
+            button2.Location = new Point(399, 413);
             button2.Name = "button2";
             button2.Size = new Size(125, 37);
             button2.TabIndex = 7;
@@ -208,7 +195,7 @@
             // 
             AddUserBtn.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             AddUserBtn.ForeColor = Color.FromArgb(64, 64, 64);
-            AddUserBtn.Location = new Point(616, 443);
+            AddUserBtn.Location = new Point(622, 413);
             AddUserBtn.Name = "AddUserBtn";
             AddUserBtn.Size = new Size(125, 37);
             AddUserBtn.TabIndex = 9;
@@ -226,7 +213,6 @@
             Controls.Add(AddUserBtn);
             Controls.Add(Logout);
             Controls.Add(button2);
-            Controls.Add(textBox3);
             Controls.Add(button1);
             Controls.Add(textBox2);
             Controls.Add(textBox1);
@@ -252,7 +238,6 @@
         private TextBox textBox1;
         private TextBox textBox2;
         private Button button1;
-        private TextBox textBox3;
         private Button Logout;
         private Button button2;
         private Button AddUserBtn;

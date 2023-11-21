@@ -76,7 +76,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.ForeColor = Color.DarkSlateGray;
+            label1.ForeColor = Color.FromArgb(224, 224, 224);
             label1.Location = new Point(17, 19);
             label1.Name = "label1";
             label1.Size = new Size(68, 15);
@@ -86,9 +86,9 @@
             // CaseTitle
             // 
             CaseTitle.AcceptsTab = true;
-            CaseTitle.BackColor = Color.Azure;
+            CaseTitle.BackColor = Color.White;
             CaseTitle.BorderStyle = BorderStyle.FixedSingle;
-            CaseTitle.ForeColor = Color.FromArgb(0, 64, 64);
+            CaseTitle.ForeColor = Color.FromArgb(64, 64, 64);
             CaseTitle.Location = new Point(31, 37);
             CaseTitle.Name = "CaseTitle";
             CaseTitle.Size = new Size(161, 23);
@@ -96,12 +96,11 @@
             // 
             // CreateBtn
             // 
-            CreateBtn.BackColor = Color.DarkSlateGray;
-            CreateBtn.BackgroundImageLayout = ImageLayout.None;
+            CreateBtn.BackColor = Color.Lavender;
             CreateBtn.FlatStyle = FlatStyle.Flat;
             CreateBtn.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            CreateBtn.ForeColor = Color.FromArgb(224, 224, 224);
-            CreateBtn.Location = new Point(96, 241);
+            CreateBtn.ForeColor = Color.FromArgb(64, 64, 64);
+            CreateBtn.Location = new Point(90, 241);
             CreateBtn.Name = "CreateBtn";
             CreateBtn.Size = new Size(93, 34);
             CreateBtn.TabIndex = 7;
@@ -113,7 +112,7 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            label3.ForeColor = Color.DarkSlateGray;
+            label3.ForeColor = Color.FromArgb(224, 224, 224);
             label3.Location = new Point(17, 63);
             label3.Name = "label3";
             label3.Size = new Size(98, 15);
@@ -123,7 +122,7 @@
             // 
             // CaseDescription
             // 
-            CaseDescription.BackColor = Color.Azure;
+            CaseDescription.BackColor = Color.White;
             CaseDescription.BorderStyle = BorderStyle.FixedSingle;
             CaseDescription.ForeColor = Color.FromArgb(64, 64, 64);
             CaseDescription.Location = new Point(31, 125);
@@ -134,9 +133,9 @@
             // 
             // CaseAttroney
             // 
-            CaseAttroney.BackColor = Color.Azure;
+            CaseAttroney.BackColor = Color.White;
             CaseAttroney.DropDownHeight = 1000;
-            CaseAttroney.ForeColor = Color.FromArgb(0, 64, 64);
+            CaseAttroney.ForeColor = Color.FromArgb(64, 64, 64);
             CaseAttroney.FormattingEnabled = true;
             CaseAttroney.IntegralHeight = false;
             CaseAttroney.ItemHeight = 15;
@@ -150,7 +149,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            label2.ForeColor = Color.DarkSlateGray;
+            label2.ForeColor = Color.FromArgb(224, 224, 224);
             label2.Location = new Point(17, 107);
             label2.Name = "label2";
             label2.Size = new Size(115, 15);
@@ -159,24 +158,25 @@
             // 
             // pictureBox1
             // 
+            pictureBox1.BackColor = Color.Black;
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(1, 0);
+            pictureBox1.Location = new Point(-6, 0);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(409, 451);
+            pictureBox1.Size = new Size(415, 451);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 10;
             pictureBox1.TabStop = false;
             // 
             // textBox1
             // 
-            textBox1.BackColor = Color.DarkSeaGreen;
+            textBox1.BackColor = Color.FromArgb(64, 64, 64);
             textBox1.BorderStyle = BorderStyle.None;
-            textBox1.Font = new Font("Showcard Gothic", 25F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
-            textBox1.ForeColor = Color.FromArgb(0, 64, 64);
-            textBox1.Location = new Point(291, 27);
+            textBox1.Font = new Font("Nueva", 24.7499962F, FontStyle.Bold, GraphicsUnit.Point);
+            textBox1.ForeColor = Color.Lavender;
+            textBox1.Location = new Point(503, 32);
             textBox1.Multiline = true;
             textBox1.Name = "textBox1";
-            textBox1.Size = new Size(181, 49);
+            textBox1.Size = new Size(181, 43);
             textBox1.TabIndex = 11;
             textBox1.Text = "Add Case";
             textBox1.TextAlign = HorizontalAlignment.Center;
@@ -185,8 +185,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.DarkSeaGreen;
-            BackgroundImageLayout = ImageLayout.Stretch;
+            BackColor = Color.FromArgb(64, 64, 64);
             ClientSize = new Size(800, 450);
             Controls.Add(textBox1);
             Controls.Add(pictureBox1);
@@ -196,6 +195,7 @@
             Name = "Form4";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Form4";
+            Load += Form4_Load;
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();

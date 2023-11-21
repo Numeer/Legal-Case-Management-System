@@ -11,8 +11,8 @@ namespace Legal_Case
 
         public Form1()
         {
-            connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"E:\\Legal-Case-Management-System\\Legal Case\\Legal Case\\Database1.mdf\";Integrated Security=True";
-            //connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"C:\\Users\\Gold\\LCMS\\Legal-Case-Management-System\\Legal Case\\Legal Case\\Database1.mdf\";Integrated Security=True";
+            //connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"E:\\Legal-Case-Management-System\\Legal Case\\Legal Case\\Database1.mdf\";Integrated Security=True";
+            connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"C:\\Users\\Gold\\LCMS\\Legal-Case-Management-System\\Legal Case\\Legal Case\\Database1.mdf\";Integrated Security=True";
             InitializeComponent();
         }
 
@@ -37,7 +37,7 @@ namespace Legal_Case
                     ResetLoginAttempts();
                     CheckIfAdmin();
                     SetLastLogin();
-                    Form2 form2 = new Form2(email, connectionString,admin);
+                    Form2 form2 = new Form2(email, connectionString, admin);
                     form2.Show();
                     this.Hide();
                 }
@@ -205,8 +205,8 @@ namespace Legal_Case
                 }
             }
         }
-        
-        
+
+
         private void SetLastLogin()
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -222,8 +222,8 @@ namespace Legal_Case
                 }
             }
         }
-        
-        
+
+
         private void closeBtn_Click(object sender, EventArgs e)
         {
             Application.Exit();

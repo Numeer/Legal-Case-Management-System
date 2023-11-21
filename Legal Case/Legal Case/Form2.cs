@@ -25,7 +25,7 @@ namespace Legal_Case
             email = userEmail;
             connectionString = String;
             this.admin = admin;
-            if(admin)
+            if (admin)
             {
                 query = @"SELECT C.CaseID, C.CaseName, C.Status, C.Progress
                      FROM [Case] AS C";
@@ -54,7 +54,7 @@ namespace Legal_Case
                         if (admin || HasPermission("UpdateCase"))
                         {
                             DataTable caseDetails = RetrieveCaseDetails(selectedCaseID);
-                            Form3 form3 = new Form3(email, caseDetails, selectedCaseID, connectionString,admin);
+                            Form3 form3 = new Form3(email, caseDetails, selectedCaseID, connectionString, admin);
                             form3.Show();
                             this.Close();
                         }
@@ -130,7 +130,7 @@ namespace Legal_Case
         private DataTable RetrieveCaseData()
         {
             DataTable dataTable = new DataTable();
-            
+
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();
@@ -224,7 +224,7 @@ namespace Legal_Case
             if (HasPermission("CreateCase"))
             {
                 this.Close();
-                Form4 form4 = new Form4(email, connectionString,admin);
+                Form4 form4 = new Form4(email, connectionString, admin);
                 form4.Show();
             }
             else

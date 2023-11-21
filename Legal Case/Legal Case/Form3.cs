@@ -141,7 +141,9 @@ namespace Legal_Case
             string newUpload = uploadText.Text;
             UpdateCaseDetails(selectedCaseID, newStatus, newProgress, newDescription, newDocument, newUpload);
             MessageBox.Show("Case details updated successfully.", "Update Complete", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            
             Form2 form2 = new Form2(email, connectionString, admin);
+            this.Close();
             form2.Show();
         }
 

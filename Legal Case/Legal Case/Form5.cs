@@ -97,7 +97,7 @@ namespace Legal_Case
                                                     {
                                                         transaction.Commit();
                                                         MessageBox.Show("User added successfully!");
-                                                        Form2 form2 = new Form2(login_email, connectionString,admin);
+                                                        Form2 form2 = new Form2(login_email, connectionString, admin);
                                                         form2.Show();
                                                         this.Close();
 
@@ -156,6 +156,11 @@ namespace Legal_Case
         }
 
         private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
         {
 
         }

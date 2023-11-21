@@ -105,7 +105,7 @@ namespace Legal_Case
                             MessageBox.Show("Case successfully created", "", MessageBoxButtons.OK);
                         }
                         this.Close();
-                        Form2 form2 = new Form2(Email, connectionString,admin);
+                        Form2 form2 = new Form2(Email, connectionString, admin);
                         form2.Show();
                     }
                 }
@@ -119,6 +119,11 @@ namespace Legal_Case
         private void CreateBtn_Click(object sender, EventArgs e)
         {
             Create_Case();
+        }
+
+        private void Form4_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

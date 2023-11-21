@@ -49,6 +49,7 @@
             // 
             // FirstName
             // 
+            FirstName.BackColor = Color.White;
             FirstName.Location = new Point(21, 71);
             FirstName.Multiline = true;
             FirstName.Name = "FirstName";
@@ -58,26 +59,27 @@
             // 
             // panel1
             // 
-            panel1.BackColor = Color.FromArgb(192, 64, 0);
+            panel1.BackColor = Color.FromArgb(64, 64, 64);
             panel1.Controls.Add(pictureBox1);
-            panel1.Location = new Point(116, 70);
+            panel1.Location = new Point(85, 56);
             panel1.Name = "panel1";
-            panel1.Size = new Size(558, 308);
+            panel1.Size = new Size(638, 322);
             panel1.TabIndex = 1;
             // 
             // pictureBox1
             // 
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(283, 3);
+            pictureBox1.Location = new Point(311, 0);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(272, 305);
+            pictureBox1.Size = new Size(327, 322);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
             // 
             // panel2
             // 
-            panel2.BackColor = Color.FromArgb(255, 192, 128);
+            panel2.BackColor = Color.Transparent;
+            panel2.BorderStyle = BorderStyle.FixedSingle;
             panel2.Controls.Add(AddUser);
             panel2.Controls.Add(Role);
             panel2.Controls.Add(Password);
@@ -87,21 +89,21 @@
             panel2.Controls.Add(LastName);
             panel2.Controls.Add(label1);
             panel2.Controls.Add(FirstName);
-            panel2.Location = new Point(154, 12);
+            panel2.Location = new Point(140, 27);
             panel2.Name = "panel2";
-            panel2.Size = new Size(255, 426);
+            panel2.Size = new Size(265, 394);
             panel2.TabIndex = 2;
             // 
             // AddUser
             // 
-            AddUser.BackColor = Color.SandyBrown;
+            AddUser.BackColor = Color.FromArgb(64, 64, 64);
             AddUser.BackgroundImageLayout = ImageLayout.None;
             AddUser.FlatStyle = FlatStyle.Popup;
             AddUser.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            AddUser.ForeColor = Color.FromArgb(64, 64, 64);
-            AddUser.Location = new Point(60, 342);
+            AddUser.ForeColor = Color.FromArgb(224, 224, 224);
+            AddUser.Location = new Point(37, 342);
             AddUser.Name = "AddUser";
-            AddUser.Size = new Size(137, 36);
+            AddUser.Size = new Size(186, 36);
             AddUser.TabIndex = 8;
             AddUser.Text = "Add";
             AddUser.UseVisualStyleBackColor = false;
@@ -109,6 +111,7 @@
             // 
             // Role
             // 
+            Role.BackColor = Color.White;
             Role.ForeColor = SystemColors.WindowFrame;
             Role.FormattingEnabled = true;
             Role.Location = new Point(21, 297);
@@ -119,6 +122,7 @@
             // 
             // Password
             // 
+            Password.BackColor = Color.White;
             Password.Location = new Point(21, 257);
             Password.Multiline = true;
             Password.Name = "Password";
@@ -128,6 +132,7 @@
             // 
             // Country
             // 
+            Country.BackColor = Color.White;
             Country.Location = new Point(21, 220);
             Country.Multiline = true;
             Country.Name = "Country";
@@ -137,6 +142,7 @@
             // 
             // Email
             // 
+            Email.BackColor = Color.White;
             Email.Location = new Point(21, 187);
             Email.Multiline = true;
             Email.Name = "Email";
@@ -146,6 +152,7 @@
             // 
             // PhNo
             // 
+            PhNo.BackColor = Color.White;
             PhNo.Location = new Point(21, 144);
             PhNo.Multiline = true;
             PhNo.Name = "PhNo";
@@ -155,6 +162,7 @@
             // 
             // LastName
             // 
+            LastName.BackColor = Color.White;
             LastName.Location = new Point(21, 109);
             LastName.Multiline = true;
             LastName.Name = "LastName";
@@ -165,11 +173,11 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 19F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.ForeColor = Color.FromArgb(192, 64, 0);
-            label1.Location = new Point(60, 19);
+            label1.Font = new Font("Yu Gothic UI Semibold", 18.75F, FontStyle.Bold, GraphicsUnit.Point);
+            label1.ForeColor = Color.FromArgb(64, 64, 64);
+            label1.Location = new Point(63, 12);
             label1.Name = "label1";
-            label1.Size = new Size(121, 36);
+            label1.Size = new Size(120, 35);
             label1.TabIndex = 1;
             label1.Text = "Add User";
             label1.Click += label1_Click;
@@ -189,6 +197,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = SystemColors.ButtonHighlight;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(800, 450);
@@ -197,6 +206,7 @@
             Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.None;
             Name = "Form5";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Form5";
             panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
