@@ -1,19 +1,4 @@
 # Legal-Case-Management-System
-# Roles:
-**Admin/Manager**
-* Manage users and their roles.
-* Configure system settings.
-* Access to all features and functionalities.
-  
-**Attorney/Lawyer**
-* Create, update, and manage legal cases.
-* Access to case-related documents and schedules.
-* Collaboration tools for communication with clients and team members.
-  
-**Legal Assistant/Paralegal**
-* Assist in case management.
-* Upload and manage documents related to cases.
-* Limited access to some administrative settings.
 
 # Proposal
 1. Executive Summary
