@@ -1,0 +1,39 @@
+# Ignore Visual Studio files
+.vs/
+*.csproj.user
+**/bin/
+**/obj/
+*.pdb
+*.exe
+
+# Ignore build artifacts
+Debug/
+Release/
+
+# Ignore ReSharper files
+*_Resharper*
+
+# Ignore user-specific files
+*.user
+*.suo
+
+# Ignore NuGet package directory
+packages/
+
+# Ignore compiled C# files
+*.dll
+*.exe
+
+# Ignore various generated files
+*.cache
+*.vsix
+*.log
+*.vscode
+*.dbmdl
+*.pch
+*.gpState
+
+# Ignore temporary files and backups
+*~
+*.bak
+*.bak.*
