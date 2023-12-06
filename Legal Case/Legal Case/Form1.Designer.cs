@@ -29,129 +29,150 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            picture = new PictureBox();
-            icon = new PictureBox();
-            name = new Label();
-            password = new Label();
             loginButton = new Button();
-            nameText = new TextBox();
             passwordText = new TextBox();
-            ((System.ComponentModel.ISupportInitialize)picture).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)icon).BeginInit();
+            nameText = new TextBox();
+            panel1 = new Panel();
+            pictureBox1 = new PictureBox();
+            pictureBox3 = new PictureBox();
+            pictureBox2 = new PictureBox();
+            panel2 = new Panel();
+            closeBtn = new Button();
+            pictureBox4 = new PictureBox();
+            panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
+            panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
             SuspendLayout();
-            // 
-            // picture
-            // 
-            picture.Image = (Image)resources.GetObject("picture.Image");
-            picture.Location = new Point(112, 12);
-            picture.Name = "picture";
-            picture.Size = new Size(236, 419);
-            picture.SizeMode = PictureBoxSizeMode.AutoSize;
-            picture.TabIndex = 0;
-            picture.TabStop = false;
-            // 
-            // icon
-            // 
-            icon.BackColor = SystemColors.ButtonShadow;
-            icon.BackgroundImageLayout = ImageLayout.None;
-            icon.Image = (Image)resources.GetObject("icon.Image");
-            icon.Location = new Point(477, 78);
-            icon.Name = "icon";
-            icon.Size = new Size(82, 70);
-            icon.SizeMode = PictureBoxSizeMode.StretchImage;
-            icon.TabIndex = 1;
-            icon.TabStop = false;
-            // 
-            // name
-            // 
-            name.Location = new Point(376, 179);
-            name.Name = "name";
-            name.Size = new Size(80, 30);
-            name.TabIndex = 2;
-            name.Text = "Email";
-            name.TextAlign = ContentAlignment.MiddleCenter;
-            name.Click += name_Click;
-            // 
-            // password
-            // 
-            password.Location = new Point(376, 240);
-            password.Name = "password";
-            password.Size = new Size(80, 30);
-            password.TabIndex = 3;
-            password.Text = "Password";
-            password.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // loginButton
             // 
+            loginButton.BackColor = Color.White;
             loginButton.FlatStyle = FlatStyle.Popup;
-            loginButton.Location = new Point(477, 305);
+            loginButton.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            loginButton.ForeColor = SystemColors.ControlDarkDark;
+            loginButton.Location = new Point(91, 225);
             loginButton.Name = "loginButton";
-            loginButton.Size = new Size(90, 41);
+            loginButton.Size = new Size(100, 41);
             loginButton.TabIndex = 6;
             loginButton.Text = "LOGIN";
-            loginButton.UseVisualStyleBackColor = true;
+            loginButton.UseVisualStyleBackColor = false;
             loginButton.Click += loginButton_Click;
-            // 
-<<<<<<< HEAD
-=======
-            // rememberMe
-            // 
-            rememberMe.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            rememberMe.AutoSize = true;
-            rememberMe.BackgroundImage = (Image)resources.GetObject("rememberMe.BackgroundImage");
-            rememberMe.ForeColor = SystemColors.Control;
-            rememberMe.Location = new Point(376, 289);
-            rememberMe.Name = "rememberMe";
-            rememberMe.Size = new Size(104, 19);
-            rememberMe.TabIndex = 7;
-            rememberMe.Text = "Remember Me";
-            rememberMe.UseVisualStyleBackColor = true;
-            // 
-            // forgot
-            // 
-            forgot.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            forgot.BackColor = SystemColors.Info;
-            forgot.BackgroundImage = (Image)resources.GetObject("forgot.BackgroundImage");
-            forgot.BackgroundImageLayout = ImageLayout.None;
-            forgot.FlatAppearance.BorderColor = Color.FromArgb(64, 64, 64);
-            forgot.FlatStyle = FlatStyle.Flat;
-            forgot.ForeColor = SystemColors.Control;
-            forgot.Location = new Point(532, 282);
-            forgot.Name = "forgot";
-            forgot.Size = new Size(114, 31);
-            forgot.TabIndex = 8;
-            forgot.Text = "Forgot Password?";
-            forgot.TextImageRelation = TextImageRelation.ImageAboveText;
-            forgot.UseVisualStyleBackColor = false;
-            forgot.Visible = false;
-            // 
->>>>>>> 5ee72d1f144995111698e7fbdc8959c10bba46f2
-            // nameText
-            // 
-            nameText.AcceptsTab = true;
-            nameText.BackColor = Color.FromArgb(64, 64, 64);
-            nameText.BorderStyle = BorderStyle.FixedSingle;
-            nameText.ForeColor = SystemColors.Info;
-            nameText.Location = new Point(462, 179);
-            nameText.Name = "nameText";
-            nameText.Size = new Size(184, 23);
-<<<<<<< HEAD
-            nameText.TabIndex = 10;
-=======
-            nameText.TabIndex = 9;
->>>>>>> 5ee72d1f144995111698e7fbdc8959c10bba46f2
-            nameText.TextChanged += nameText_TextChanged;
             // 
             // passwordText
             // 
             passwordText.AcceptsTab = true;
-            passwordText.BackColor = Color.FromArgb(64, 64, 64);
+            passwordText.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            passwordText.BackColor = SystemColors.Control;
             passwordText.BorderStyle = BorderStyle.FixedSingle;
-            passwordText.ForeColor = SystemColors.Info;
-            passwordText.Location = new Point(462, 247);
+            passwordText.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
+            passwordText.ForeColor = Color.FromArgb(64, 64, 64);
+            passwordText.Location = new Point(72, 168);
+            passwordText.MinimumSize = new Size(182, 39);
             passwordText.Name = "passwordText";
-            passwordText.Size = new Size(184, 23);
+            passwordText.PlaceholderText = "  Password";
+            passwordText.Size = new Size(182, 39);
             passwordText.TabIndex = 10;
+            // 
+            // nameText
+            // 
+            nameText.AcceptsTab = true;
+            nameText.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            nameText.BackColor = SystemColors.Control;
+            nameText.BorderStyle = BorderStyle.FixedSingle;
+            nameText.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
+            nameText.ForeColor = Color.FromArgb(64, 64, 64);
+            nameText.Location = new Point(72, 110);
+            nameText.MaximumSize = new Size(200, 200);
+            nameText.MinimumSize = new Size(182, 39);
+            nameText.Name = "nameText";
+            nameText.PlaceholderText = "  Email ID";
+            nameText.Size = new Size(182, 39);
+            nameText.TabIndex = 9;
+            // 
+            // panel1
+            // 
+            panel1.AutoScroll = true;
+            panel1.BackColor = Color.DimGray;
+            panel1.Controls.Add(pictureBox1);
+            panel1.Controls.Add(pictureBox3);
+            panel1.Controls.Add(pictureBox2);
+            panel1.Controls.Add(loginButton);
+            panel1.Controls.Add(nameText);
+            panel1.Controls.Add(passwordText);
+            panel1.Location = new Point(28, 24);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(279, 281);
+            panel1.TabIndex = 11;
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.BackColor = Color.Linen;
+            pictureBox1.BackgroundImageLayout = ImageLayout.Stretch;
+            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
+            pictureBox1.Location = new Point(91, 13);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(100, 82);
+            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox1.TabIndex = 12;
+            pictureBox1.TabStop = false;
+            // 
+            // pictureBox3
+            // 
+            pictureBox3.Image = (Image)resources.GetObject("pictureBox3.Image");
+            pictureBox3.Location = new Point(24, 168);
+            pictureBox3.Name = "pictureBox3";
+            pictureBox3.Size = new Size(42, 39);
+            pictureBox3.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox3.TabIndex = 12;
+            pictureBox3.TabStop = false;
+            // 
+            // pictureBox2
+            // 
+            pictureBox2.BackColor = Color.FromArgb(0, 64, 64);
+            pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
+            pictureBox2.Location = new Point(24, 110);
+            pictureBox2.Name = "pictureBox2";
+            pictureBox2.Size = new Size(42, 39);
+            pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox2.TabIndex = 11;
+            pictureBox2.TabStop = false;
+            // 
+            // panel2
+            // 
+            panel2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            panel2.BackColor = Color.Transparent;
+            panel2.BackgroundImageLayout = ImageLayout.Stretch;
+            panel2.BorderStyle = BorderStyle.FixedSingle;
+            panel2.Controls.Add(panel1);
+            panel2.Location = new Point(348, 70);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(333, 324);
+            panel2.TabIndex = 12;
+            // 
+            // closeBtn
+            // 
+            closeBtn.BackColor = SystemColors.ButtonHighlight;
+            closeBtn.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            closeBtn.Location = new Point(774, 0);
+            closeBtn.Name = "closeBtn";
+            closeBtn.Size = new Size(26, 25);
+            closeBtn.TabIndex = 13;
+            closeBtn.Text = "x";
+            closeBtn.UseVisualStyleBackColor = false;
+            closeBtn.Click += closeBtn_Click;
+            // 
+            // pictureBox4
+            // 
+            pictureBox4.Image = (Image)resources.GetObject("pictureBox4.Image");
+            pictureBox4.Location = new Point(122, 70);
+            pictureBox4.Name = "pictureBox4";
+            pictureBox4.Size = new Size(231, 324);
+            pictureBox4.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox4.TabIndex = 14;
+            pictureBox4.TabStop = false;
             // 
             // Form1
             // 
@@ -161,33 +182,36 @@
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(800, 450);
-            Controls.Add(passwordText);
-            Controls.Add(nameText);
-            Controls.Add(loginButton);
-            Controls.Add(password);
-            Controls.Add(name);
-            Controls.Add(icon);
-            Controls.Add(picture);
+            Controls.Add(pictureBox4);
+            Controls.Add(closeBtn);
+            Controls.Add(panel2);
+            FormBorderStyle = FormBorderStyle.None;
             MaximizeBox = false;
             MinimizeBox = false;
             Name = "Form1";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Form1";
+            Text = " ";
             Load += Form1_Load;
-            ((System.ComponentModel.ISupportInitialize)picture).EndInit();
-            ((System.ComponentModel.ISupportInitialize)icon).EndInit();
+            panel1.ResumeLayout(false);
+            panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
+            panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
-
-        private PictureBox picture;
-        private PictureBox icon;
-        private Label name;
-        private Label password;
         private Button loginButton;
-        private TextBox nameText;
         private TextBox passwordText;
+        private TextBox nameText;
+        private Panel panel1;
+        private PictureBox pictureBox1;
+        private Panel panel2;
+        private PictureBox pictureBox2;
+        private PictureBox pictureBox3;
+        private Button closeBtn;
+        private PictureBox pictureBox4;
     }
 }
